@@ -1,3 +1,7 @@
+* {
+    font-family: 'Barlow', sans-serif;
+}
+
 .nav-item {
     color: #000 !important;
     text-transform: uppercase;
@@ -50,7 +54,6 @@
     color: #300;
     margin-top: 10px;
     margin-left: 10px;
-    font-family: 'Roboto', sans-serif;
     font-size: 14px;
 }
 
@@ -72,7 +75,6 @@ footer {
     background: #f3f3f1;
     margin-top: 60px;
     font-size: 18px;
-    font-family: 'Barlow', sans-serif;
     text-transform: uppercase;
 }
 footer .copy {
@@ -92,7 +94,6 @@ footer .copy {
 }
 
 .contact-row input, .contact-row input::placeholder, .contact-row textarea {
-    font-family: 'Barlow', sans-serif;
     text-transform: uppercase;
     text-align: center;
 }
@@ -102,7 +103,6 @@ span.my-orange {
 }
 
 h1, h2, h3, h4 {
-    font-family: 'Barlow', sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.15em;
 }
@@ -120,7 +120,6 @@ h1, h2, h3, h4 {
     background: #FF5900;
     margin-top: 60px;
     opacity: 0.8;
-    font-family: 'Barlow', sans-serif;
 }
 
 .home-newsletter .single {
@@ -162,7 +161,6 @@ ul.breadcrumb {
     padding: 10px 16px;
     list-style: none;
     background-color: #fff;
-    font-family: 'Barlow', sans-serif;
 }
 
 ul.breadcrumb li {
