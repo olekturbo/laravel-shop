@@ -11,8 +11,11 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-    <link href="{{ mix('css/template.css') }}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+
     <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ mix('css/template.css') }}" rel="stylesheet" type="text/css">
     @yield('css')
 </head>
 <body>
@@ -39,31 +42,17 @@
                 </div>
             </div>
         </nav>
-        <div id="clothesCarousel" class="carousel slide pt-5" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="d-block w-100" src="{{ asset('images/ubrania.jpeg') }}" alt="First cloth">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset('images/ubrania2.jpg') }}" alt="Second cloth">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset('images/ubrania3.jpg') }}" alt="Third cloth">
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#clothesCarousel" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#clothesCarousel" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
     </div>
-    @yield('content')
-    <script src="{{ mix('js/template.js') }}"></script>
+        @yield('content')
+
+    <footer>
+        <div class="copy text-center font-weight-bold">
+            <span class="my-orange">©</span> {{ date('Y') }} <span class="my-orange">myown.vh</span> all rights reserved
+        </div>
+    </footer>
+
     <script src="{{ mix('js/app.js') }}"></script>
+    <script src="{{ mix('js/template.js') }}"></script>
     @yield('js')
 </body>
 </html>

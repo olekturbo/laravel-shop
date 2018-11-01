@@ -16,12 +16,13 @@ mix.js('resources/js/app.js', 'public/js')
 
 mix.styles([
     'node_modules/bootstrap/dist/css/bootstrap.css',
-    'resources/css/custom.css'
+    'node_modules/slider-pro/dist/css/slider-pro.css',
+    'node_modules/icheck-bootstrap/icheck-bootstrap.css',
+    'resources/css/custom.css',
 ], 'public/css/template.css');
 
 mix.js([
     'node_modules/jquery/dist/jquery.js',
-    'resources/js/custom.js'
-], 'public/js/template.js').sourceMaps();
-
-mix.version();
+    'node_modules/slider-pro/dist/js/jquery.sliderPro.js',
+    'resources/js/custom.js',
+], 'public/js/template.js');

@@ -45,3 +45,148 @@
         display: inline-grid;
     }
 }
+
+.item-row .item-title, .item-row .item-price{
+    color: #300;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
+
+.item-row .item-price {
+    font-size: 18px;
+}
+
+.item-row a:hover {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 767px) {
+    .item-row a {
+        padding-top: 30px;
+    }
+}
+
+footer {
+    background: #f3f3f1;
+    margin-top: 60px;
+    font-size: 18px;
+    font-family: 'Barlow', sans-serif;
+    text-transform: uppercase;
+}
+footer .copy {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-weight: 400 !important;
+}
+
+.contact-row .btn-primary {
+    background: #FF5900;
+    border-color: #FF5900;
+}
+.contact-row .btn-primary:hover {
+    background: #FF5900;
+    border-color: #FF5900;
+    opacity: 0.8;
+}
+
+.contact-row input, .contact-row input::placeholder, .contact-row textarea {
+    font-family: 'Barlow', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+span.my-orange {
+    color: #FF5900;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Barlow', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+
+.item-header{
+    padding-top: 40px;
+}
+
+.contact-header {
+    padding-top: 80px;
+}
+
+.home-newsletter {
+    padding: 80px 0;
+    background: #FF5900;
+    margin-top: 60px;
+    opacity: 0.8;
+    font-family: 'Barlow', sans-serif;
+}
+
+.home-newsletter .single {
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2; }
+.home-newsletter .single h2 {
+    font-size: 22px;
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 40px; }
+.home-newsletter .single .form-control {
+    height: 50px;
+    background: rgba(255, 255, 255, 0.6);
+    border-color: transparent;
+    border-radius: 20px 0 0 20px;
+    text-transform: uppercase;
+    text-align: center;
+    }
+.home-newsletter .single .form-control:focus {
+    box-shadow: none;
+    border-color: #243c4f; }
+.home-newsletter .single .btn {
+    min-height: 50px;
+    border-radius: 0 20px 20px 0;
+    background: #243c4f;
+    color: #fff;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+.home-newsletter .single .form-control::placeholder {
+    text-transform: uppercase;
+    text-align: center;
+}
+
+ul.breadcrumb {
+    padding: 10px 16px;
+    list-style: none;
+    background-color: #fff;
+    font-family: 'Barlow', sans-serif;
+}
+
+ul.breadcrumb li {
+    display: inline;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: black;
+    content: "/\00a0";
+}
+
+ul.breadcrumb li a {
+    color: #FF5900;
+    text-decoration: none;
+}
+
+ul.breadcrumb li a:hover {
+    color: #FF5900;
+    text-decoration: underline;
+}
+
+#product-slider img {
+    object-fit: cover;
+}

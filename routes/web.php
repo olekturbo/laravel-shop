@@ -13,4 +13,8 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+
+Route::get('/product', function () {
+   return view('product');
+})->name('product');
