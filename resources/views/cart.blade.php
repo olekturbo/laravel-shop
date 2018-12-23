@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-@if(session()->has('cart_message'))
+@if(session()->has('cart_status'))
     <div class="toast__container float-right mr-5" style="display: hidden">
         <div class="toast__cell">
-            @if(session()->get('cart_message') == 'success')
+            @if(session()->get('cart_status') == 'success')
             <div class="toast toast--green">
                 <div class="toast__icon">
                     <svg version="1.1" class="toast__svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
@@ -14,7 +14,7 @@
                 </div>
                 <div class="toast__content">
                     <p class="toast__type">Sukces!</p>
-                    <p class="toast__message">Produkt został poprawnie dodany do koszyka.</p>
+                    <p class="toast__message">{{ session()->get('cart_message') }}</p>
                 </div>
                 <div class="toast__close">
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.642 15.642" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 15.642 15.642">
@@ -24,7 +24,7 @@
             </div>
             @endif
 
-            @if(session()->get('cart_message') == 'delete')
+            @if(session()->get('cart_status') == 'delete')
             <div class="toast toast--red add-margin">
                 <div class="toast__icon">
                     <svg version="1.1" class="toast__svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 301.691 301.691" style="enable-background:new 0 0 301.691 301.691;" xml:space="preserve">
@@ -36,7 +36,7 @@
                 </div>
                 <div class="toast__content">
                     <p class="toast__type">Sukces!</p>
-                    <p class="toast__message">Produkt został poprawnie usunięty z koszyka.</p>
+                    <p class="toast__message">{{ session()->get('cart_message') }}</p>
                 </div>
                 <div class="toast__close">
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.642 15.642" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 15.642 15.642">
