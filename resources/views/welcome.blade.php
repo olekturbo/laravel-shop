@@ -28,62 +28,17 @@
                 <h2 class="item-header">bestsellery</h2>
                 <hr class="pb-5">
             </div>
-            <a href="{{ route('product') }}" class="col-md-4">
-                <img src="https://unsplash.it/600.jpg?image=252" class="img-fluid rounded"  onmouseover="this.src='https://unsplash.it/600.jpg?image=253';" onmouseout="this.src='https://unsplash.it/600.jpg?image=252'">
-                <div class="item-title">
-                    BLUZA SPARTA GR 300
-                </div>
-                <div class="item-price">
-                    179,00 PLN
-                </div>
-            </a>
-            <a href="{{ route('product') }}" class="col-md-4">
-                <img src="https://unsplash.it/600.jpg?image=252" class="img-fluid rounded"  onmouseover="this.src='https://unsplash.it/600.jpg?image=253';" onmouseout="this.src='https://unsplash.it/600.jpg?image=252'">
-                <div class="item-title">
-                    BLUZA SPARTA GR 300
-                </div>
-                <div class="item-price">
-                    179,00 PLN
-                </div>
-            </a>
-            <a href="{{ route('product') }}" class="col-md-4">
-                <img src="https://unsplash.it/600.jpg?image=252" class="img-fluid rounded"  onmouseover="this.src='https://unsplash.it/600.jpg?image=253';" onmouseout="this.src='https://unsplash.it/600.jpg?image=252'">
-                <div class="item-title">
-                    BLUZA SPARTA GR 300
-                </div>
-                <div class="item-price">
-                    179,00 PLN
-                </div>
-            </a>
-        </div>
-        <div class="row pt-5 item-row">
-            <a href="{{ route('product') }}" class="col-md-4">
-                <img src="https://unsplash.it/600.jpg?image=252" class="img-fluid rounded"  onmouseover="this.src='https://unsplash.it/600.jpg?image=253';" onmouseout="this.src='https://unsplash.it/600.jpg?image=252'">
-                <div class="item-title">
-                    BLUZA SPARTA GR 300
-                </div>
-                <div class="item-price">
-                    179,00 PLN
-                </div>
-            </a>
-            <a href="{{ route('product') }}" class="col-md-4">
-                <img src="https://unsplash.it/600.jpg?image=252" class="img-fluid rounded"  onmouseover="this.src='https://unsplash.it/600.jpg?image=253';" onmouseout="this.src='https://unsplash.it/600.jpg?image=252'">
-                <div class="item-title">
-                    BLUZA SPARTA GR 300
-                </div>
-                <div class="item-price">
-                    179,00 PLN
-                </div>
-            </a>
-            <a href="{{ route('product') }}" class="col-md-4">
-                <img src="https://unsplash.it/600.jpg?image=252" class="img-fluid rounded"  onmouseover="this.src='https://unsplash.it/600.jpg?image=253';" onmouseout="this.src='https://unsplash.it/600.jpg?image=252'">
-                <div class="item-title">
-                    BLUZA SPARTA GR 300
-                </div>
-                <div class="item-price">
-                    179,00 PLN
-                </div>
-            </a>
+           @foreach($products as $product)
+                <a href="{{ route('product', [$product->id, str_slug($product->name)]) }}" class="col-md-4">
+                    <img src="{{ Voyager::image($product->front_image) }}" class="img-fluid rounded"  onmouseover="this.src='{{ Voyager::image($product->back_image) }}';" onmouseout="this.src='{{ Voyager::image($product->front_image) }}'">
+                    <div class="item-title">
+                        BLUZA SPARTA GR 300
+                    </div>
+                    <div class="item-price">
+                        179,00 PLN
+                    </div>
+                </a>
+           @endforeach
         </div>
     </div>
     <section class="home-newsletter">

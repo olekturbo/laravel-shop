@@ -25,4 +25,5 @@ mix.js([
     'node_modules/jquery/dist/jquery.js',
     'node_modules/slider-pro/dist/js/jquery.sliderPro.js',
     'resources/js/custom.js',
-], 'public/js/template.js');
+], 'public/js/template.js')
+    .version();

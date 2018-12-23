@@ -11,10 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', 'WelcomeController@index')->name('welcome');
 
-Route::get('/product', function () {
-   return view('product');
-})->name('product');
+Route::get('/product/{id}/{slug?}', 'ProductController@show')->name('product');
+
+Route::post('/add-to-cart/{id}', 'ProductController@addToCart')->name('product.addToCart');
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});

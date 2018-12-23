@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
+use App\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -45,7 +47,14 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::find($id);
+        if($product) {
+            $similar_products = Product::where('category_id', $product->category->id)->where('id', '!=', $id)->orderBy('created_at', 'desc')->take(4)->get();
+            return view('product', compact('product', 'similar_products'));
+        }
+
+        return redirect()->route('welcome');
+
     }
 
     /**
@@ -80,5 +89,18 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function addToCart(Request $request, $id) {
+        $product = Product::find($id);
+        $oldCart = session()->has('cart') ? session()->get('cart') : null;
+        $price = $product->discount_price ?? $product->price;
+        $quantity = $request->quantity ?? 0;
+        $cart = new Cart($oldCart);
+        $cart->add($product, $price, $quantity);
+
+        $request->session()->put('cart', $cart);
+
+        return redirect()->route('welcome');
     }
 }

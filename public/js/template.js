@@ -60,12 +60,12 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 44);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 2:
+/***/ "./node_modules/jquery/dist/jquery.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10437,17 +10437,7 @@ return jQuery;
 
 /***/ }),
 
-/***/ 44:
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(2);
-__webpack_require__(45);
-module.exports = __webpack_require__(46);
-
-
-/***/ }),
-
-/***/ 45:
+/***/ "./node_modules/slider-pro/dist/js/jquery.sliderPro.js":
 /***/ (function(module, exports) {
 
 /*!
@@ -16659,7 +16649,7 @@ JWPlayerVideo.prototype.replay = function() {
 
 /***/ }),
 
-/***/ 46:
+/***/ "./resources/js/custom.js":
 /***/ (function(module, exports) {
 
 /* SLIDER PRO */
@@ -16684,6 +16674,36 @@ $('#product-slider').sliderPro({
     }
 });
 /* END SLIDER PRO */
+$('#category-slider').sliderPro({
+    width: 800,
+    height: 600,
+    orientation: 'horizontal',
+    thumbnailsPosition: 'bottom',
+    buttons: true,
+    breakpoints: {
+        800: {
+            thumbnailsPosition: 'bottom',
+            thumbnailWidth: 250,
+            thumbnailHeight: 250
+        },
+        500: {
+            orientation: 'vertical',
+            thumbnailsPosition: 'bottom',
+            thumbnailWidth: 100,
+            thumbnailHeight: 100
+        }
+    }
+});
+
+/***/ }),
+
+/***/ 1:
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__("./node_modules/jquery/dist/jquery.js");
+__webpack_require__("./node_modules/slider-pro/dist/js/jquery.sliderPro.js");
+module.exports = __webpack_require__("./resources/js/custom.js");
+
 
 /***/ })
 

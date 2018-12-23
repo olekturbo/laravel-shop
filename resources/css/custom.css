@@ -203,3 +203,15 @@ ul.breadcrumb li a:hover {
     object-fit: cover;
 }
 /* End SliderPro */
+
+a * {
+   color: black;
+}
+
+.shopping-cart-amount {
+    background-color: #ff5900;
+    border-radius: 3px;
+    color: white;
+    padding: 2px 8px;
+    position: absolute;
+}

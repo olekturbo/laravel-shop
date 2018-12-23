@@ -24,21 +24,18 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{ route('welcome') }}">
                 <img src="{{ asset('images/logo.png') }}" alt="logo">
             </a>
             <div class="nav-option order-lg-last">
                 <a class="nav-item nav-link" href="#"><i class="fa fa-user"></i> twoje konto</a>
-                <a class="nav-item nav-link" href="#"><i class="fa fa-shopping-cart"></i> koszyk</a>
+                <a class="nav-item nav-link" href="#"><i class="fa fa-shopping-cart"></i> koszyk @if(session()->get('cart')) <span class="shopping-cart-amount ml-1">{{ session()->get('cart') ? session()->get('cart')->totalQty : "" }}</span> @endif </a>
             </div>
             <div class="collapse navbar-collapse" id="navbarToggler">
                 <div class="navbar-nav text-center text-right pr-3">
-                    <a class="nav-item nav-link active" href="#">bluzy</a>
-                    <a class="nav-item nav-link" href="#">koszulki</a>
-                    <a class="nav-item nav-link" href="#">spodnie</a>
-                    <a class="nav-item nav-link" href="#">kurtki</a>
-                    <a class="nav-item nav-link" href="#">akcesoria</a>
-                    <a class="nav-item nav-link" href="#">muzyka</a>
+                    @foreach($categories as $category)
+                        <a class="nav-item nav-link @if($loop->first) active @endif" href="#">{{ $category->name }}</a>
+                    @endforeach
                 </div>
             </div>
         </nav>
