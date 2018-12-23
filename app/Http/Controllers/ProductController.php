@@ -96,7 +96,7 @@ class ProductController extends Controller
         $oldCart = session()->has('cart') ? session()->get('cart') : null;
         $price = $product->discount_price ?? $product->price;
         $quantity = $request->quantity ?? 0;
-        $size = key($request->sizes);
+        $size = $request->size;
         $cart = new Cart($oldCart);
         $cart->add($product, $price, $quantity, $size);
 
@@ -106,14 +106,30 @@ class ProductController extends Controller
     }
 
     public function updateCart(Request $request, $id, $size) {
-        $product = Product::find($id);
-        $oldCart = session()->has('cart') ? session()->get('cart') : null;
-        $cart = new Cart($oldCart);
-        $cart->edit($product, $request->value, $size);
 
-        $request->session()->put('cart', $cart);
-
-        return $product->toJson();
+        if(is_numeric($request->value)) {
+            $product = Product::find($id);
+            $oldCart = session()->has('cart') ? session()->get('cart') : null;
+            $cart = new Cart($oldCart);
+            $cart->edit($product, $request->value, $size);
+            $request->session()->put('cart', $cart);
+            $products = $request->session()->get('cart');
+            $totalPrice = $products->totalPrice;
+            $totalQty = $products->totalQty;
+            $price = $products->items[$id][$size]['price'];
+            $qty = $products->items[$id][$size]['qty'];
+            return response()->json([
+                'totalPrice' => $totalPrice,
+                'totalQty' => $totalQty,
+                'price' => $price,
+                'qty' => $qty,
+                'id' => $id,
+                'size' => $size,
+            ]);
+        }
+        else {
+            return response()->json(['error' => 'To nie jest prawidłowa liczba!'], 400);
+        }
     }
 
     public function deleteFromCart(Request $request, $id, $size) {

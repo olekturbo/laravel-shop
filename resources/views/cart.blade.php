@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-@include('layouts.partials.cart_messages')
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-12">
+            @include('layouts.partials.cart_messages')
             @if(isset($products) && !empty($products->items))
             <h1>ZAWARTOŚĆ TWOJEGO KOSZYKA</h1>
             <table class="mt-5">
@@ -23,25 +23,25 @@
                 @foreach($products->items as $size => $product)
                     @foreach($product as $size => $single_product)
                     <tr>
-                        <td class="text-uppercase"><a href="{{ route('product', [$single_product['item']->id, str_slug($single_product['item']->name)]) }}">{{ $single_product['item']->name }}</a></td>
-                        <td><img src="{{ Voyager::image($single_product['item']->front_image) }}" width="100"></td>
-                        <td>{{ $size }}</td>
-                        <td>{{ $single_product['price'] }} zł</td>
-                        <td>{{ $single_product['item']->discount_price ?? $single_product['item']->price }} zł</td>
-                        <td>
+                        <td data-column="Produkt" class="text-uppercase"><a href="{{ route('product', [$single_product['item']->id, str_slug($single_product['item']->name)]) }}">{{ $single_product['item']->name }}</a></td>
+                        <td data-column="Zdjęcie podglądowe"><img src="{{ Voyager::image($single_product['item']->front_image) }}" width="100"></td>
+                        <td data-column="Rozmiar">{{ $size }}</td>
+                        <td data-column="Cena łączna" id="product{{ $single_product['item']->id }}{{ $size }}">{{ $single_product['price'] }} zł</td>
+                        <td data-column="Cena jednostkowa">{{ $single_product['item']->discount_price ?? $single_product['item']->price }} zł</td>
+                        <td data-column="Ilość">
                             <input data-url="{{ route('product.updateCart', [$single_product['item']->id, $size]) }}" class="quantity-input" style="width: 4em" type="number" value="{{ $single_product['qty'] }}">
                         </td>
                         <form action="{{ route('product.deleteFromCart', [$single_product['item']->id, $size]) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <td><button class="btn btn-danger" type="submit"><i class="fas fa-trash"></i> </button></td>
+                            <td data-column="Akcje"><button class="btn btn-template" type="submit"><i class="fas fa-trash"></i> </button></td>
                         </form>
                     </tr>
                     @endforeach
                 @endforeach
                 </tbody>
             </table>
-                <h5 class="mt-5">DO ZAPŁATY: {{ $products->totalPrice }} zł</h5>
+                <h5 id="totalPrice" class="mt-5">DO ZAPŁATY: {{ $products->totalPrice }} zł</h5>
             @else
                 <h5>KOSZYK JEST PUSTY</h5>
             @endif
@@ -59,8 +59,8 @@
                 parent.fadeOut("slow", function() { $(this).remove(); } );
             });
             @if(session()->has('cart_message'))
-            $('.toast__container').fadeIn('slow', function(){
-                $('.toast__container').delay(5000).fadeOut();
+            $('.sessionMessage').fadeIn('slow', function(){
+                $('.sessionMessage').delay(2000).fadeOut();
             });
             @endif
 
@@ -71,9 +71,19 @@
                     type : 'get',
                     dataType: 'json',
                     url  : url,
-                    data : {'value':value},
+                    data : {
+                        'value':value,
+                    },
                     success:function(data) {
-                        console.log(data);
+                        $('#totalPrice').text('DO ZAPŁATY: ' + Math.round(data.totalPrice * 100) / 100 + " zł");
+                        $('#totalQty').text(data.totalQty);
+                        $('#product' + data.id + data.size).text(Math.round(data.price * 100) / 100 + " zł" );
+                        $('.ajaxMessage').fadeIn('normal', function(){
+                            $('.ajaxMessage').delay(1000).fadeOut();
+                        });
+                    },
+                    error:function(data) {
+                        console.log(data.error);
                     }
                 });
             });
