@@ -29,7 +29,7 @@
                         <td>{{ $single_product['price'] }} zł</td>
                         <td>{{ $single_product['item']->discount_price ?? $single_product['item']->price }} zł</td>
                         <td>
-                            <input data-url="{{ route('product.updateCart', [$single_product['item']->id, $size]) }}" id="quantity" style="width: 4em" type="number" value="{{ $single_product['qty'] }}">
+                            <input data-url="{{ route('product.updateCart', [$single_product['item']->id, $size]) }}" class="quantity-input" style="width: 4em" type="number" value="{{ $single_product['qty'] }}">
                         </td>
                         <form action="{{ route('product.deleteFromCart', [$single_product['item']->id, $size]) }}" method="POST">
                             @csrf
@@ -64,7 +64,7 @@
             });
             @endif
 
-            $('#quantity').change(function(){
+            $('.quantity-input').change(function(){
                 var value=$(this).val();
                 var url = $(this).attr('data-url');
                 $.ajax({

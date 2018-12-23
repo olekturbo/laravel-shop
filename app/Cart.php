@@ -42,15 +42,11 @@ class Cart extends Model
             }
         }
 
-        $storedItem['qty'] -= $oldQuantity;
-        $storedItem['qty'] += $quantity;
-        $storedItem['price'] -= ($item->discount_price ?? $item->price) * $oldQuantity;
-        $storedItem['price'] += ($item->discount_price ?? $item->price) * $quantity;
+        $storedItem['qty'] += $quantity - $oldQuantity;
+        $storedItem['price'] += ($item->discount_price ?? $item->price) * $quantity - ($item->discount_price ?? $item->price) * $oldQuantity;;
         $this->items[$item->id][$size] = $storedItem;
-        $this->totalQty -= $oldQuantity;
-        $this->totalQty += $quantity;
-        $this->totalPrice -= ($item->discount_price ?? $item->price) * $oldQuantity;
-        $this->totalPrice += ($item->discount_price ?? $item->price) * $quantity;
+        $this->totalQty += $quantity - $oldQuantity;
+        $this->totalPrice += ($item->discount_price ?? $item->price) * $quantity - ($item->discount_price ?? $item->price) * $oldQuantity;
     }
 
     public function remove($item, $size) {
