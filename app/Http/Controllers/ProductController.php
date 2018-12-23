@@ -102,7 +102,7 @@ class ProductController extends Controller
 
         $request->session()->put('cart', $cart);
 
-        return redirect()->route('product.showCart');
+        return redirect()->route('product.showCart')->with('cart_message', 'success');
     }
 
     public function deleteFromCart(Request $request, $id, $size) {
@@ -113,7 +113,7 @@ class ProductController extends Controller
 
         $request->session()->put('cart', $cart);
 
-        return redirect()->route('product.showCart');
+        return redirect()->route('product.showCart')->with('cart_message', 'delete');
     }
 
     public function showCart(Request $request) {
