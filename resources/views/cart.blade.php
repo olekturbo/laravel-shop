@@ -28,11 +28,13 @@
                         <td>{{ $size }}</td>
                         <td>{{ $single_product['price'] }} zł</td>
                         <td>{{ $single_product['item']->discount_price ?? $single_product['item']->price }} zł</td>
-                        <td><input style="width: 4em" type="number" value="{{ $single_product['qty'] }}"> </td>
+                        <td>
+                            <input data-url="{{ route('product.updateCart', [$single_product['item']->id, $size]) }}" id="quantity" style="width: 4em" type="number" value="{{ $single_product['qty'] }}">
+                        </td>
                         <form action="{{ route('product.deleteFromCart', [$single_product['item']->id, $size]) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <td><button class="btn btn-danger" type="submit">Usuń</button></td>
+                            <td><button class="btn btn-danger" type="submit"><i class="fas fa-trash"></i> </button></td>
                         </form>
                     </tr>
                     @endforeach
@@ -61,6 +63,21 @@
                 $('.toast__container').delay(5000).fadeOut();
             });
             @endif
+
+            $('#quantity').change(function(){
+                var value=$(this).val();
+                var url = $(this).attr('data-url');
+                $.ajax({
+                    type : 'get',
+                    dataType: 'json',
+                    url  : url,
+                    data : {'value':value},
+                    success:function(data) {
+                        console.log(data);
+                    }
+                });
+            });
+
         });
     </script>
 @stop

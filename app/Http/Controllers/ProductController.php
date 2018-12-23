@@ -105,6 +105,17 @@ class ProductController extends Controller
         return redirect()->route('product.showCart')->with(['cart_status' => 'success', 'cart_message' => 'Produkt został pomyślnie dodany do koszyka.']);
     }
 
+    public function updateCart(Request $request, $id, $size) {
+        $product = Product::find($id);
+        $oldCart = session()->has('cart') ? session()->get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->edit($product, $request->value, $size);
+
+        $request->session()->put('cart', $cart);
+
+        return $product->toJson();
+    }
+
     public function deleteFromCart(Request $request, $id, $size) {
         $product = Product::find($id);
         $oldCart = session()->has('cart') ? session()->get('cart') : null;
