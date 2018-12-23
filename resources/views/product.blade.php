@@ -40,7 +40,7 @@
                                 <h5>ROZMIAR</h5>
                                 @foreach($product->decoded_sizes as $decoded_size)
                                 <div class="icheck-success icheck-inline">
-                                    <input type="radio" id="r{{ $loop->index }}" name="size" />
+                                    <input type="radio" id="r{{ $loop->index }}" name="sizes[{{ $decoded_size }}]" />
                                     <label for="r{{ $loop->index }}">{{ $decoded_size }}</label>
                                 </div>
                                 @endforeach
@@ -53,7 +53,7 @@
                     </div>
                     <div class="row mt-5">
                         <div class="col-md-12">
-                            <button type="submit" class="btn btn-dark btn-lg"><i class="fas fa-shopping-cart"></i> Dodaj do koszyka</button>
+                            <button id="checkBtn" type="submit" class="btn btn-dark btn-lg"><i class="fas fa-shopping-cart"></i> Dodaj do koszyka</button>
                         </div>
                     </div>
                 </div>
@@ -83,4 +83,20 @@
         </div>
         @endif
     </div>
+@stop
+
+@section('js')
+    <script>
+        $(document).ready(function () {
+            $('#checkBtn').click(function() {
+                checked = $("input[type=radio]:checked").length;
+
+                if(!checked) {
+                    alert("Musisz zaznaczyć rozmiar!");
+                    return false;
+                }
+
+            });
+        });
+    </script>
 @stop

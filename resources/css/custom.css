@@ -204,8 +204,12 @@ ul.breadcrumb li a:hover {
 }
 /* End SliderPro */
 
-a * {
+a {
    color: black;
+}
+
+a:hover {
+    color: #FF5900;
 }
 
 .shopping-cart-amount {
@@ -215,3 +219,15 @@ a * {
     padding: 2px 8px;
     position: absolute;
 }
+/* Table */
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    text-align: center;
+    padding: 8px;
+}
+/* End Table */

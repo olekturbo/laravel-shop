@@ -96,11 +96,29 @@ class ProductController extends Controller
         $oldCart = session()->has('cart') ? session()->get('cart') : null;
         $price = $product->discount_price ?? $product->price;
         $quantity = $request->quantity ?? 0;
+        $size = key($request->sizes);
         $cart = new Cart($oldCart);
-        $cart->add($product, $price, $quantity);
+        $cart->add($product, $price, $quantity, $size);
 
         $request->session()->put('cart', $cart);
 
-        return redirect()->route('welcome');
+        return redirect()->route('product.showCart');
+    }
+
+    public function deleteFromCart(Request $request, $id, $size) {
+        $product = Product::find($id);
+        $oldCart = session()->has('cart') ? session()->get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->remove($product, $size);
+
+        $request->session()->put('cart', $cart);
+
+        return redirect()->route('product.showCart');
+    }
+
+    public function showCart(Request $request) {
+        $products = $request->session()->get('cart');
+
+        return view('cart', compact('products'));
     }
 }

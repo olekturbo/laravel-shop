@@ -29,7 +29,7 @@
             </a>
             <div class="nav-option order-lg-last">
                 <a class="nav-item nav-link" href="#"><i class="fa fa-user"></i> twoje konto</a>
-                <a class="nav-item nav-link" href="#"><i class="fa fa-shopping-cart"></i> koszyk @if(session()->get('cart')) <span class="shopping-cart-amount ml-1">{{ session()->get('cart') ? session()->get('cart')->totalQty : "" }}</span> @endif </a>
+                <a class="nav-item nav-link" href="{{ route('product.showCart') }}"><i class="fa fa-shopping-cart"></i> koszyk @if(session()->get('cart')) <span class="shopping-cart-amount ml-1">{{ session()->get('cart') ? session()->get('cart')->totalQty : "" }}</span> @endif </a>
             </div>
             <div class="collapse navbar-collapse" id="navbarToggler">
                 <div class="navbar-nav text-center text-right pr-3">

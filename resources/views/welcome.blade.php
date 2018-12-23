@@ -31,11 +31,11 @@
            @foreach($products as $product)
                 <a href="{{ route('product', [$product->id, str_slug($product->name)]) }}" class="col-md-4">
                     <img src="{{ Voyager::image($product->front_image) }}" class="img-fluid rounded"  onmouseover="this.src='{{ Voyager::image($product->back_image) }}';" onmouseout="this.src='{{ Voyager::image($product->front_image) }}'">
-                    <div class="item-title">
-                        BLUZA SPARTA GR 300
+                    <div class="item-title text-uppercase">
+                        {{ $product->name }}
                     </div>
                     <div class="item-price">
-                        179,00 PLN
+                        {{ $product->discount_price ?? $product->price }} PLN
                     </div>
                 </a>
            @endforeach
