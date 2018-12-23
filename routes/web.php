@@ -16,7 +16,7 @@ Route::get('/', 'WelcomeController@index')->name('welcome');
 Route::get('/product/{id}/{slug?}', 'ProductController@show')->name('product');
 Route::get('/cart', 'ProductController@showCart')->name('product.showCart');
 Route::post('/add-to-cart/{id}', 'ProductController@addToCart')->name('product.addToCart');
-Route::get('/delete-from-cart/{id}/{size}', 'ProductController@deleteFromCart')->name('product.deleteFromCart');
+Route::delete('/delete-from-cart/{id}/{size}', 'ProductController@deleteFromCart')->name('product.deleteFromCart');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

@@ -28,7 +28,11 @@
                         <td>{{ $single_product['price'] }} zł</td>
                         <td>{{ $single_product['item']->discount_price ?? $single_product['item']->price }} zł</td>
                         <td><input style="width: 4em" type="number" value="{{ $single_product['qty'] }}"> </td>
-                        <td><a href="{{ route('product.deleteFromCart', [$single_product['item']->id, $size]) }}">Usuń</a></td>
+                        <form action="{{ route('product.deleteFromCart', [$single_product['item']->id, $size]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <td><button class="btn btn-danger" type="submit">Usuń</button></td>
+                        </form>
                     </tr>
                     @endforeach
                 @endforeach
