@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             @if(isset($products) && !empty($products->items))
-            <h1>ZAWARTOŚĆ TWOJEGO KOSZYKA</h1>
+            <h1 class="text-center">ZAWARTOŚĆ TWOJEGO KOSZYKA</h1>
             <table class="mt-5">
                 <thead>
                     <tr>
@@ -48,9 +48,60 @@
                     <div class="col-md-12 text-right">
                         <h5 name="totalPrice" id="totalPrice">DO ZAPŁATY: {{ $products->totalPrice }} zł</h5>
                     </div>
-                    <div class="col-md-12 text-center">
+                   <div class="col-md-12 mt-5">
+                       <h5 class="text-center">DANE ADRESOWE</h5>
+                       <div class="row mt-5">
+                           <div class="col-md-6">
+                               <div class="form-group">
+                                   <input form="transferForm" name="first_name" type="text" id="first_name" class="form-control" required>
+                                   <label class="form-control-placeholder" for="first_name">Imię</label>
+                               </div>
+                           </div>
+                           <div class="col-md-6">
+                               <div class="form-group">
+                                   <input form="transferForm" name="last_name" type="text" id="last_name" class="form-control" required>
+                                   <label class="form-control-placeholder" for="last_name">Nazwisko</label>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="row mt-3">
+                           <div class="col-md-4">
+                               <div class="form-group">
+                                   <input form="transferForm" name="street" type="text" id="street" class="form-control" required>
+                                   <label class="form-control-placeholder" for="street">Ulica</label>
+                               </div>
+                           </div>
+                           <div class="col-md-4">
+                               <div class="form-group">
+                                   <input form="transferForm" name="post_code" type="text" id="post_code" class="form-control" required>
+                                   <label class="form-control-placeholder" for="post_code">Kod pocztowy</label>
+                               </div>
+                           </div>
+                           <div class="col-md-4">
+                               <div class="form-group">
+                                   <input form="transferForm" name="city" type="text" id="city" class="form-control" required>
+                                   <label class="form-control-placeholder" for="city">Miejscowość</label>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="row mt-3">
+                           <div class="col-md-6">
+                               <div class="form-group">
+                                   <input form="transferForm" name="email" type="email" id="email" class="form-control" required>
+                                   <label class="form-control-placeholder" for="email">Adres e-mail</label>
+                               </div>
+                           </div>
+                           <div class="col-md-6">
+                               <div class="form-group">
+                                   <input form="transferForm" name="phone" type="tel" id="phone" class="form-control" required>
+                                   <label class="form-control-placeholder" for="phone">Telefon</label>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                    <div class="col-md-12 text-center mt-5">
                         <h5>WYBIERZ FORMĘ PŁATNOŚCI</h5>
-                        <div id="tpay_content"></div>
+                        <div id="tpay_content" class="mt-5"></div>
                     </div>
                     <div class="col-md-12 text-center mt-3">
                         <p><input type="checkbox" name="rules_confirmation"> Akceptuję regulamin serwisu <a target="_blank" href="https://tpay.com/regulaminy-i-umowy">Tpay</a></p>
