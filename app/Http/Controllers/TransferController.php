@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 
 class TransferController extends Controller
@@ -26,11 +25,11 @@ class TransferController extends Controller
             $suma_kontrolna = $_POST['md5sum'];
 
             if($status_transakcji=='TRUE' && $blad=='none'){
-                Log::info('true');
+                return redirect()->away('http://google.com');
             }
             else
             {
-                Log::info('false');
+                return redirect()->away('http://google.pl');
             }
         }
         echo 'TRUE'; // odpowiedź dla serwera o odebraniu danych
