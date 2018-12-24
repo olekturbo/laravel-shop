@@ -26,4 +26,5 @@ mix.js([
     'node_modules/slider-pro/dist/js/jquery.sliderPro.js',
     'resources/js/custom.js',
 ], 'public/js/template.js')
-    .version();
+
+mix.copy('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/fonts');
