@@ -53,6 +53,7 @@
                         <div id="tpay_content"></div>
                     </div>
                     <div class="col-md-12 text-center mt-3">
+                        <p><input type="checkbox" name="rules_confirmation"> Akceptuję regulamin serwisu <a target="_blank" href="https://tpay.com/regulaminy-i-umowy">Tpay</a></p>
                         <button form="transferForm" type="submit" class="btn btn-template">REALIZUJ ZAMÓWIENIE</button>
                     </div>
                 </div>

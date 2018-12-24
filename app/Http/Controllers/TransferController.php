@@ -23,6 +23,7 @@ class TransferController extends Controller
             $crc = 1234;
             $group = $request->group;
             $md5sum = md5($id.$price.$crc.$api_security);
+            $rules_confirmation = $request->rules_confirmation ? 1 : 0;
 
             /* POST */
             $URI = 'https://secure.tpay.com/api/gw/'.$api_key.'/transaction/create';
@@ -37,7 +38,8 @@ class TransferController extends Controller
                 'name' => 'test user',
                 'result_url' => route('transfer.callback'),
                 'return_url' => route('transfer.success'),
-                'return_error_url' => route('transfer.error')
+                'return_error_url' => route('transfer.error'),
+                'accept_tos' => $rules_confirmation
             ];
             $response = $client->post($URI, $params);
 
