@@ -394,8 +394,9 @@ only screen and (max-width: 760px),
 .toast--red:before{
     background-color:#dc3545;
 }
-.right-0 {
-    right: 0;
+.right-5-top-10 {
+    right: 5%;
+    top: 10%;
 }
 /* End Toast */
 

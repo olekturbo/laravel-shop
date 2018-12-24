@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+@include('layouts.partials.cart_messages')
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-12">
-            @include('layouts.partials.cart_messages')
             @if(isset($products) && !empty($products->items))
             <h1>ZAWARTOŚĆ TWOJEGO KOSZYKA</h1>
             <table class="mt-5">

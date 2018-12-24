@@ -1,5 +1,5 @@
 
-<div id="messages_container" class="toast__container position-absolute right-0">
+<div id="messages_container" class="toast__container position-absolute right-5-top-10">
     <div class="toast__cell">
         @if(session()->get('cart_status') == 'success')
             <div class="toast toast--green sessionMessage" style="display: none">
