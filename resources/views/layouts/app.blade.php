@@ -48,8 +48,8 @@
         </div>
     </footer>
 
-    <script src="{{ mix('js/app.js') }}"></script>
-    <script src="{{ mix('js/template.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/template.js') }}"></script>
     @yield('js')
 </body>
 </html>
