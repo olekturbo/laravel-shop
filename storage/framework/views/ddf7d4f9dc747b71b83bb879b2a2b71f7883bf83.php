@@ -48,8 +48,8 @@
         </div>
     </footer>
 
-    <script src="<?php echo e(mix('js/app.js')); ?>"></script>
-    <script src="<?php echo e(mix('js/template.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/app.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/template.js')); ?>"></script>
     <?php echo $__env->yieldContent('js'); ?>
 </body>
 </html>

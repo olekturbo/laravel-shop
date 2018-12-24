@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class TransferController extends Controller
 {
@@ -45,18 +46,13 @@ class TransferController extends Controller
             $ciag_pomocniczy = $request['tr_crc'];
             $email_klienta = $request['tr_email'];
             $suma_kontrolna = $request['md5sum'];
-        // sprawdzenie stanu transakcji
+        
             if($status_transakcji=='TRUE' && $blad=='none'){
-                /*
-                Dalsze przetwarzanie, np:
-                - identyfikacja transakcji na podstawie ciągu pomocniczego
-                - weryfikacja transakcji (sprawdzenie poprawności kwoty itp.)
-                - realizacja zamówienia
-                */
+               Log::info('true');
             }
             else
             {
-        // transakcja wykonana niepoprawnie
+              Log::info('false');
             }
         }
         echo 'TRUE'; // odpowiedź dla serwera o odebraniu danych
