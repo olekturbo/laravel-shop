@@ -16,12 +16,13 @@ class TransferController extends Controller
             $api_key = config('tpay.tpay_api_key');
             $api_password = config('tpay.tpay_api_password');
             $api_security = config('tpay.tpay_security');
+            $api_email = config('tpay.tpay_email');
 
             /* TRANSACTION */
             $description = 'Opis';
             $price = $request->session()->get('cart')->totalPrice;
             $crc = 1234;
-            $group = $request->group;
+            $group = $request->group ?? 103;
             $md5sum = md5($id.$price.$crc.$api_security);
             $rules_confirmation = $request->rules_confirmation ? 1 : 0;
 
@@ -37,6 +38,7 @@ class TransferController extends Controller
                 'group' => $group,
                 'name' => 'test user',
                 'result_url' => route('transfer.callback'),
+                'result_email' => $api_email,
                 'return_url' => route('transfer.success'),
                 'return_error_url' => route('transfer.error'),
                 'accept_tos' => $rules_confirmation
