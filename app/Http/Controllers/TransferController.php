@@ -45,7 +45,7 @@ class TransferController extends Controller
             return redirect()->away($data->url);
 
     }
-    public function callback() {
+    public function callback(Request $request) {
         // sprawdzenie adresu IP oraz występowania zmiennych POST
         $ip_table = array('195.149.229.109', '148.251.96.163', '178.32.201.77',
             '46.248.167.59', '46.29.19.106'); $_POST['id'];
@@ -63,11 +63,11 @@ class TransferController extends Controller
             $suma_kontrolna = $_POST['md5sum'];
 
             if($status_transakcji=='TRUE' && $blad=='none'){
-                \Log::info('true');
+                \Log::info($request->all());
             }
             else
             {
-                \Log::info('false');
+                \Log::info($request->all());
             }
         }
         echo 'TRUE'; // odpowiedź dla serwera o odebraniu danych
