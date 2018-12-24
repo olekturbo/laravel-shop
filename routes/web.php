@@ -19,7 +19,7 @@ Route::post('/add-to-cart/{id}', 'ProductController@addToCart')->name('product.a
 Route::get('/update-cart{id}/{size}', 'ProductController@updateCart')->name('product.updateCart');
 Route::delete('/delete-from-cart/{id}/{size}', 'ProductController@deleteFromCart')->name('product.deleteFromCart');
 Route::post('/order', 'TransferController@order')->name('transfer.order');
-Route::get('/order/callback', 'TransferController@callback')->name('transfer.callback');
+Route::post('/order/callback', 'TransferController@callback')->name('transfer.callback');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
