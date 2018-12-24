@@ -406,3 +406,29 @@ only screen and (max-width: 760px),
     color: white;
 }
 /* End Custom Button */
+
+/* TPAY */
+#channels div.selected {
+    border: 2px solid #1E63A9;
+    border-radius: 4px 4px 4px 4px;
+    margin: 3px 3px -1px -1px;
+}
+#channels div {
+    background-color: white;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 1px solid #b2b2b2;
+    border-radius: 0.2em;
+    cursor: pointer;
+    display: inline-block;
+    width: 120px;
+    height:70px;
+    margin-right: 4px;
+    margin-top: 4px;
+}
+
+#channels div p.label {
+    display:none;
+}
+/* END TPAY */

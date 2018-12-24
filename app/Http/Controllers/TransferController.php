@@ -21,6 +21,7 @@ class TransferController extends Controller
             $description = 'Opis';
             $price = $request->session()->get('cart')->totalPrice;
             $crc = 1234;
+            $group = $request->group;
             $md5sum = md5($id.$price.$crc.$api_security);
 
             /* POST */
@@ -32,7 +33,7 @@ class TransferController extends Controller
                 'description' => $description,
                 'crc' => $crc,
                 'md5sum' => $md5sum,
-                'group' => 150,
+                'group' => $group,
                 'name' => 'test user',
                 'result_url' => route('transfer.callback'),
                 'return_url' => route('transfer.success'),

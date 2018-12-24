@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 @include('layouts.partials.cart_messages')
 <div class="container mt-5">
@@ -33,6 +32,7 @@
                             <td data-column="Ilość">
                                 <input data-url="{{ route('product.updateCart', [$single_product['item']->id, $size]) }}" class="quantity-input" style="width: 4em" type="number" value="{{ $single_product['qty'] }}">
                             </td>
+                            <input type="hidden" name="group" id="tpay_group">
                         </form>
                         <form id="deleteForm" action="{{ route('product.deleteFromCart', [$single_product['item']->id, $size]) }}" method="POST">
                             @csrf
@@ -45,10 +45,14 @@
                 </tbody>
             </table>
                 <div class="row mt-5">
-                    <div class="col-md-6">
+                    <div class="col-md-12 text-right">
                         <h5 name="totalPrice" id="totalPrice">DO ZAPŁATY: {{ $products->totalPrice }} zł</h5>
                     </div>
-                    <div class="col-md-6 text-right">
+                    <div class="col-md-12 text-center">
+                        <h5>WYBIERZ FORMĘ PŁATNOŚCI</h5>
+                        <div id="tpay_content"></div>
+                    </div>
+                    <div class="col-md-12 text-center mt-3">
                         <button form="transferForm" type="submit" class="btn btn-template">REALIZUJ ZAMÓWIENIE</button>
                     </div>
                 </div>
@@ -61,6 +65,7 @@
 @stop
 
 @section('js')
+    <script type="text/javascript" src="https://secure.tpay.com/groups-10100.js"></script>
     <script>
         jQuery(document).ready(function(){
             jQuery('.toast__close').click(function(e){
@@ -73,31 +78,6 @@
                 $('.sessionMessage').delay(2000).fadeOut();
             });
             @endif
-
-            $('.quantity-input').change(function(){
-                var value=$(this).val();
-                var url = $(this).attr('data-url');
-                $.ajax({
-                    type : 'get',
-                    dataType: 'json',
-                    url  : url,
-                    data : {
-                        'value':value,
-                    },
-                    success:function(data) {
-                        $('#totalPrice').text('DO ZAPŁATY: ' + Math.round(data.totalPrice * 100) / 100 + " zł");
-                        $('#totalQty').text(data.totalQty);
-                        $('#product' + data.id + data.size).text(Math.round(data.price * 100) / 100 + " zł" );
-                        $('.ajaxMessage').fadeIn('normal', function(){
-                            $('.ajaxMessage').delay(1000).fadeOut();
-                        });
-                    },
-                    error:function(data) {
-                        console.log(data.error);
-                    }
-                });
-            });
-
         });
     </script>
 @stop
