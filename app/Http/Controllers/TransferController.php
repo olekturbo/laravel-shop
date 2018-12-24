@@ -9,16 +9,38 @@ use GuzzleHttp\Client;
 class TransferController extends Controller
 {
     public function order(Request $request) {
+            $client = new Client();
+
+            /* API */
             $id = config('tpay.tpay_id');
-            $totalPrice = session()->get('cart')->totalPrice;
-            $description = 'Opis transakcji';
-            $crc = 'transakcja';
-            $security = config('tpay.tpay_security');
-            $md5sum = md5($id.$totalPrice.$crc.$security);
+            $api_key = config('tpay.tpay_api_key');
+            $api_password = config('tpay.tpay_api_password');
+            $api_security = config('tpay.tpay_security');
 
-            $wyn_url = route('transfer.callback');
+            /* TRANSACTION */
+            $description = 'Opis';
+            $price = $request->session()->get('cart')->totalPrice;
+            $crc = 1234;
+            $md5sum = md5($id.$price.$crc.$api_security);
 
-            return redirect()->away('https://secure.tpay.com?id='.$id.'&kwota='.$totalPrice.'&opis='.$description.'&wyn_url='.$wyn_url.'&crc='.$crc.'&md5sum='.$md5sum);
+            /* POST */
+            $URI = 'https://secure.tpay.com/api/gw/'.$api_key.'/transaction/create';
+            $params['form_params'] = [
+                'api_password' => $api_password,
+                'id' => $id,
+                'amount' => $price,
+                'description' => $description,
+                'crc' => $crc,
+                'md5sum' => $md5sum,
+                'group' => 150,
+                'name' => 'test user',
+                'result_url' => route('transfer.callback')
+            ];
+            $response = $client->post($URI, $params);
+
+            $data = simplexml_load_string($response->getBody()->getContents());
+
+            return redirect()->away($data->url);
 
     }
     public function callback() {
