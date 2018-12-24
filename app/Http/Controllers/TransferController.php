@@ -3,10 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 
 
 class TransferController extends Controller
 {
+    public function order(Request $request) {
+            $id = config('tpay.tpay_id');
+            $totalPrice = session()->get('cart')->totalPrice;
+            $description = 'Opis transakcji';
+            $crc = 'transakcja';
+            $security = config('tpay.tpay_security');
+            $md5sum = md5($id.$totalPrice.$crc.$security);
+
+            $wyn_url = route('transfer.callback');
+
+            return redirect()->away('https://secure.tpay.com?id='.$id.'&kwota='.$totalPrice.'&opis='.$description.'&wyn_url='.$wyn_url.'&crc='.$crc.'&md5sum='.$md5sum);
+
+    }
     public function callback() {
         // sprawdzenie adresu IP oraz występowania zmiennych POST
         $ip_table = array('195.149.229.109', '148.251.96.163', '178.32.201.77',
