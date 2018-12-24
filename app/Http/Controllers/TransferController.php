@@ -25,11 +25,11 @@ class TransferController extends Controller
             $suma_kontrolna = $_POST['md5sum'];
 
             if($status_transakcji=='TRUE' && $blad=='none'){
-                \Log::info('test');
+                \Log::info('true');
             }
             else
             {
-                \Log::info('test');
+                \Log::info('false');
             }
         }
         echo 'TRUE'; // odpowiedź dla serwera o odebraniu danych
