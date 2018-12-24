@@ -25,11 +25,11 @@ class TransferController extends Controller
             $suma_kontrolna = $_POST['md5sum'];
 
             if($status_transakcji=='TRUE' && $blad=='none'){
-                return redirect()->away('http://google.com');
+                \Log::info('test');
             }
             else
             {
-                return redirect()->away('http://google.pl');
+                \Log::info('test');
             }
         }
         echo 'TRUE'; // odpowiedź dla serwera o odebraniu danych
