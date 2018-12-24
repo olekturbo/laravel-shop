@@ -11,6 +11,8 @@ const mix = require('laravel-mix');
  |
  */
 
+mix.copy('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/fonts');
+
 mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css');
 
@@ -26,5 +28,3 @@ mix.js([
     'node_modules/slider-pro/dist/js/jquery.sliderPro.js',
     'resources/js/custom.js',
 ], 'public/js/template.js')
-
-mix.copy('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/fonts');
