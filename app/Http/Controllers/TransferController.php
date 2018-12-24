@@ -2,34 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class TransferController extends Controller
 {
-    public function order(Request $request) {
-        $client = new Client();
-        $products = $request->session()->get('cart');
-
-        $id = config('tpay.tpay_id');
-        $totalPrice = $products->totalPrice;
-        $description = 'Opis transakcji';
-        $crc = 'Transakcja';
-        $security_code = config('tpay.tpay_security');
-
-        $response = $client->request('POST', 'https://secure.tpay.com', [
-            'form_params' => [
-                'id' => $id,
-                'kwota' => $totalPrice,
-                'opis' => $description,
-                'crc' => $crc,
-                'md5sum' => $id.$totalPrice.$crc.$security_code,
-                'wyn_url' => route('transfer.callback')
-            ]
-        ]);
-    }
-
     public function callback(Request $request) {
         // sprawdzenie adresu IP oraz występowania zmiennych POST
         $ip_table = array('195.149.229.109', '148.251.96.163', '178.32.201.77',
@@ -46,7 +23,7 @@ class TransferController extends Controller
             $ciag_pomocniczy = $request['tr_crc'];
             $email_klienta = $request['tr_email'];
             $suma_kontrolna = $request['md5sum'];
-        
+
             if($status_transakcji=='TRUE' && $blad=='none'){
                Log::info('true');
             }

@@ -21,8 +21,14 @@
                 <?php $__currentLoopData = $products->items; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $size => $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <?php $__currentLoopData = $product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $size => $single_product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
-                        <form id="transferForm" method="POST" action="<?php echo e(route('transfer.order')); ?>">
+                        <form id="transferForm" method="POST" action="https://secure.tpay.com">
                             <?php echo csrf_field(); ?>
+                            <!-- Hidden Inputs -->
+                            <input type="hidden" name="id" value="<?php echo e(config('tpay.tpay_id')); ?>">
+                            <input type="hidden" name="kwota" value="<?php echo e($products->totalPrice); ?>">
+                            <input type="hidden" name="opis" value="Opis transakcji">
+                            <input type="hidden" name="crc" value="crc">
+                            <input type="hidden" name="md5sum" value="<?php echo e(md5( config('tpay.tpay_id').$products->totalPrice.'crc'.config('tpay.tpay_security') )); ?>">
                             <td data-column="Produkt" class="text-uppercase"><a href="<?php echo e(route('product', [$single_product['item']->id, str_slug($single_product['item']->name)])); ?>"><?php echo e($single_product['item']->name); ?></a></td>
                             <td data-column="Zdjęcie podglądowe"><img src="<?php echo e(Voyager::image($single_product['item']->front_image)); ?>" width="100"></td>
                             <td data-column="Rozmiar"><?php echo e($size); ?></td>
