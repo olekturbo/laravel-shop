@@ -31,6 +31,7 @@
                             <input type="hidden" name="opis" value="Opis transakcji">
                             <input type="hidden" name="crc" value="crc">
                             <input type="hidden" name="md5sum" value="{{ md5( config('tpay.tpay_id').$products->totalPrice.'crc'.config('tpay.tpay_security') ) }}">
+                            <input type="hidden" name="wyn_url" value="{{ route('transfer.callback') }}">
                             <td data-column="Produkt" class="text-uppercase"><a href="{{ route('product', [$single_product['item']->id, str_slug($single_product['item']->name)]) }}">{{ $single_product['item']->name }}</a></td>
                             <td data-column="Zdjęcie podglądowe"><img src="{{ Voyager::image($single_product['item']->front_image) }}" width="100"></td>
                             <td data-column="Rozmiar">{{ $size }}</td>
