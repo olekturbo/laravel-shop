@@ -34,7 +34,9 @@ class TransferController extends Controller
                 'md5sum' => $md5sum,
                 'group' => 150,
                 'name' => 'test user',
-                'result_url' => route('transfer.callback')
+                'result_url' => route('transfer.callback'),
+                'return_url' => route('transfer.success'),
+                'return_error_url' => route('transfer.error')
             ];
             $response = $client->post($URI, $params);
 
@@ -69,5 +71,13 @@ class TransferController extends Controller
             }
         }
         echo 'TRUE'; // odpowiedź dla serwera o odebraniu danych
+    }
+
+    public function success() {
+        return view('transfers.success');
+    }
+
+    public function error() {
+        return view('transfers.error');
     }
 }

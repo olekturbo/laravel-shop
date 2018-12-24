@@ -20,6 +20,8 @@ Route::get('/update-cart/{id}/{size}', 'ProductController@updateCart')->name('pr
 Route::delete('/delete-from-cart/{id}/{size}', 'ProductController@deleteFromCart')->name('product.deleteFromCart');
 Route::post('order/new', 'TransferController@order')->name('transfer.order');
 Route::post('/order/callback', 'TransferController@callback')->name('transfer.callback');
+Route::get('/order/success', 'TransferController@success')->name('transfer.success');
+Route::get('/order/error', 'TransferController@error')->name('transfer.error');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
