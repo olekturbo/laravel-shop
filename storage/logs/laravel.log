@@ -1,0 +1,12 @@
+[2018-12-24 02:55:42] local.ERROR: file_put_contents(/var/www/html/myown/storage/framework/sessions/KQhZ8wDzBRDbjyXz0CLfcYZdg6qqwtQviceYA1hP): failed to open stream: Permission denied {"exception":"[object] (ErrorException(code: 0): file_put_contents(/var/www/html/myown/storage/framework/sessions/KQhZ8wDzBRDbjyXz0CLfcYZdg6qqwtQviceYA1hP): failed to open stream: Permission denied at /var/www/html/myown/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:122)
+[stacktrace]
+#0 [internal function]: Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'file_put_conten...', '/var/www/html/m...', 122, Array)
+#1 /var/www/html/myown/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(122): file_put_contents('/var/www/html/m...', 'a:4:{s:6:\"_toke...', 2)
+#2 /var/www/html/myown/vendor/laravel/framework/src/Illuminate/Session/FileSessionHandler.php(83): Illuminate\\Filesystem\\Filesystem->put('/var/www/html/m...', 'a:4:{s:6:\"_toke...', true)
+#3 /var/www/html/myown/vendor/laravel/framework/src/Illuminate/Session/Store.php(129): Illuminate\\Session\\FileSessionHandler->write('KQhZ8wDzBRDbjyX...', 'a:4:{s:6:\"_toke...')
+#4 /var/www/html/myown/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(87): Illuminate\\Session\\Store->save()
+#5 /var/www/html/myown/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(218): Illuminate\\Session\\Middleware\\StartSession->terminate(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#6 /var/www/html/myown/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(189): Illuminate\\Foundation\\Http\\Kernel->terminateMiddleware(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#7 /var/www/html/myown/public/index.php(60): Illuminate\\Foundation\\Http\\Kernel->terminate(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
+#8 {main}
+"} 
