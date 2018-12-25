@@ -115,7 +115,8 @@ class TransferController extends Controller
             $checkMD5 = $this->isMd5Valid(
                 $md5sum,
                 number_format($tr_amount, 2, '.', ''),
-                $tr_crc
+                $tr_crc,
+                $tr_id
             );
 
             \Log::info($checkMD5);
@@ -170,12 +171,12 @@ class TransferController extends Controller
      *
      * @return bool
      */
-    private function isMd5Valid($md5sum, $transactionAmount, $crc)
+    private function isMd5Valid($md5sum, $transactionAmount, $crc, $id)
     {
         if (!is_string($md5sum) || strlen($md5sum) !== 32) {
             return false;
         }
-        return ($md5sum === md5($this->merchantId . $this->transactionID .
-                $transactionAmount . $crc . $this->merchantSecret));
+        return ($md5sum === md5( config('tpay.tpay_id') . $id .
+                $transactionAmount . $crc . config('tpay.tpay_security')));
     }
 }
