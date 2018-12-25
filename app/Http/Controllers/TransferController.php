@@ -112,11 +112,14 @@ class TransferController extends Controller
 
             $payment = Payment::where('tr_id', $tr_id)->first();
 
-            \Log::info($payment);
-            \Log::info($request->all());
+            $checkMD5 = $this->isMd5Valid(
+                $md5sum,
+                number_format($tr_amount, 2, '.', ''),
+                $tr_crc
+            );
 
             if($tr_status=='TRUE' && $tr_error=='none'){
-                if($payment->md5sum == $md5sum && $payment->tr_crc == $tr_crc && $payment->seller_id = $seller_id) {
+                if($checkMD5) {
                     $payment->tr_status = $tr_status;
                     $payment->tr_amount = $tr_amount;
                     $payment->tr_paid = $tr_paid;
@@ -152,5 +155,25 @@ class TransferController extends Controller
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString;
+    }
+
+    /**
+     * Check md5 sum to validate tpay response.
+     * The values of variables that md5 sum includes are available only for
+     * merchant and tpay system.
+     *
+     * @param string $md5sum md5 sum received from tpay
+     * @param float $transactionAmount transaction amount
+     * @param string $crc transaction crc
+     *
+     * @return bool
+     */
+    private function isMd5Valid($md5sum, $transactionAmount, $crc)
+    {
+        if (!is_string($md5sum) || strlen($md5sum) !== 32) {
+            return false;
+        }
+        return ($md5sum === md5($this->merchantId . $this->transactionID .
+                $transactionAmount . $crc . $this->merchantSecret));
     }
 }
