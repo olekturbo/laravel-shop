@@ -135,8 +135,7 @@ class TransferController extends Controller
                 $payment->tr_error = $tr_error;
             }
 
-            $request->session()->forget('cart');
-            $request->session()->save();
+            $request->session()->flush();
             $payment->save();
         }
         echo 'TRUE'; // odpowiedź dla serwera o odebraniu danych
