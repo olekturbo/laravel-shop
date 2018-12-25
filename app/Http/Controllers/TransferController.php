@@ -60,7 +60,8 @@ class TransferController extends Controller
                 'address' => $address,
                 'city' => $city,
                 'zip' => $zip,
-                'phone' => $phone
+                'phone' => $phone,
+                'merchant_description' => 'Laravel MyOwnApp'
             ];
             $response = $client->post($URI, $params);
 
