@@ -10680,6 +10680,9 @@ only screen and (max-width: 760px),
     background: #ff5500;
     color: white;
 }
+.color-template {
+    color: #ff5500;
+}
 .btn-link {
     color: #ff5500;
 }

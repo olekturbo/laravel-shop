@@ -148,4 +148,10 @@ class ProductController extends Controller
 
         return view('cart', compact('products'));
     }
+
+    public function order(Request $request) {
+        $products = $request->session()->get('cart');
+
+        return view('order', compact('products'));
+    }
 }
