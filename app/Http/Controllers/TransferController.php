@@ -25,9 +25,10 @@ class TransferController extends Controller
             $api_email = config('tpay.tpay_email');
 
             /* TRANSACTION */
-            $description = 'Opis';
+            $randomNumber = $this->generateRandomString();
+            $description = 'Płatność za transakcję ' . $randomNumber;
             $price = $products->totalPrice;
-            $crc = 1234;
+            $crc = rand ( 1000 , 9999 );;
             $group = $request->group ?? 103;
             $md5sum = md5($id.$price.$crc.$api_security);
             $rules_confirmation = $request->rules_confirmation ? 1 : 0;
@@ -77,7 +78,7 @@ class TransferController extends Controller
 
             /* NEW ORDER */
             $order = new Order([
-                'number' => $this->generateRandomString(),
+                'number' => $randomNumber,
                 'price' => $price,
                 'payment_id' => $payment->id
             ]);
