@@ -2,15 +2,15 @@
     {{-- Header --}}
     @slot('header')
         @component('mail::header', ['url' => config('app.url')])
-            Nowe zamówienie o numerze {{ $order->number }}!
+            Nowa płatność!
         @endcomponent
     @endslot
 
-    @component('mail::table')
+   
         Twoja płatność została zaksięgowana.
 
         Dziękujemy.
-    @endcomponent
+
 
     {{-- Subcopy --}}
     @isset($subcopy)
