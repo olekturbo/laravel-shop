@@ -28,6 +28,8 @@ class OrderPaid extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.order_paid');
+        return $this->from(config('tpay.tpay_email'))
+            ->markdown('mails.order_paid')
+            ->subject('Rejestracja płatności.');
     }
 }
