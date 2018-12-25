@@ -136,6 +136,7 @@ class TransferController extends Controller
             }
 
             $request->session()->forget('cart');
+            $request->session()->save();
             $payment->save();
         }
         echo 'TRUE'; // odpowiedź dla serwera o odebraniu danych
