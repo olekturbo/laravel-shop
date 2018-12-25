@@ -113,10 +113,10 @@ class TransferController extends Controller
             $payment = Payment::where('tr_id', $tr_id)->first();
 
             \Log::info($payment);
-            \Log::info('moje md5:' . $payment->md5sum . 'ich md5' . $md5sum);
-            \Log::info('moje crc:' . $payment->tr_crc . 'ich md5' . $tr_crc);
-            \Log::info('moje seller_id:' . $payment->tr_crc . 'ich md5' . $seller_id);
-            \Log::info($payment->md5sum == $md5sum && $payment->tr_crc == $tr_crc && $payment->seller_id = $seller_id);
+            \Log::info('moje md5: ' . $payment->md5sum . 'ich md5 ' . $md5sum);
+            \Log::info('moje crc:' . $payment->tr_crc . 'ich ' . $tr_crc);
+            \Log::info('moje seller_id:' . $payment->seller_id . 'ich ' . $seller_id);
+            \Log::info($payment->md5sum === $md5sum);
 
             if($tr_status=='TRUE' && $tr_error=='none'){
                 if($payment->md5sum == $md5sum && $payment->tr_crc == $tr_crc && $payment->seller_id = $seller_id) {
