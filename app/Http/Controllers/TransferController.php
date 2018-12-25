@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OrderCreated;
+use App\Mail\OrderPaid;
 use App\Order;
 use App\Payment;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Mail;
 
 
 class TransferController extends Controller
@@ -90,6 +93,9 @@ class TransferController extends Controller
                 }
             }
 
+            /* MAIL */
+            Mail::to($email)->send(new OrderCreated($order));
+
             $request->session()->put('order', $order->number);
 
             return redirect()->away($data->url);
@@ -129,6 +135,9 @@ class TransferController extends Controller
                     $payment->tr_date = $tr_date;
                     $payment->tr_desc = $tr_desc;
                     $payment->tr_email = $tr_email;
+
+                    /* MAIL */
+                    Mail::to($tr_email)->send(new OrderPaid());
                 }
             }
             else
