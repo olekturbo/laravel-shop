@@ -99,6 +99,7 @@ class TransferController extends Controller
             Mail::to($email)->send(new OrderCreated($order));
 
             $request->session()->put('order', $order->number);
+            $request->session()->put('email', $email);
 
             return redirect()->away($data->url);
 
@@ -147,8 +148,6 @@ class TransferController extends Controller
 
             $payment->save();
 
-            /* MAIL */
-            Mail::to($tr_email)->send(new OrderPaid());
         }
         echo 'TRUE'; // odpowiedź dla serwera o odebraniu danych
     }
@@ -156,6 +155,9 @@ class TransferController extends Controller
     public function success() {
         session()->forget('cart');
         $order = session()->get('order');
+        $email = session()->get('email');
+        /* MAIL */
+        Mail::to($email)->send(new OrderPaid());
         return view('transfers.success', compact('order'));
     }
 
