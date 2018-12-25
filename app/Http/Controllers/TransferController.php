@@ -90,6 +90,8 @@ class TransferController extends Controller
                 }
             }
 
+            $request->session()->put('order', $order->number);
+
             return redirect()->away($data->url);
 
     }
@@ -142,7 +144,8 @@ class TransferController extends Controller
 
     public function success() {
         session()->forget('cart');
-        return view('transfers.success');
+        $order = session()->get('order');
+        return view('transfers.success', compact('order'));
     }
 
     public function error() {

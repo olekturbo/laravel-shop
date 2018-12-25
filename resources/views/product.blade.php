@@ -33,7 +33,7 @@
                         @if($product->is_new) <span class="badge badge-warning p-2 text-white">NOWOŚĆ</span> @endif
                         @if($product->is_discount) <span class="badge badge-danger p-2">PROMOCJA</span> @endif
                     </div>
-                    <h3 class="pt-3"><i class="fas fa-dollar-sign"></i> {{ $product->price }} PLN @if($product->discount_price) <del style="color: #dc3545">{{ $product->discount_price }}PLN</del> @endif</h3>
+                    <h3 class="pt-3"><i class="fas fa-dollar-sign"></i> @if($product->discount_price) {{ $product->discount_price }} PLN <del style="color: #dc3545">{{ $product->price }}PLN</del> @else {{ $product->price }} PLN @endif</h3>
                     <div class="row mt-4">
                         <div class="col-md-6">
                             <div class="product-size">
