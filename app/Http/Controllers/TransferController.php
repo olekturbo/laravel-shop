@@ -97,20 +97,21 @@ class TransferController extends Controller
         // sprawdzenie adresu IP oraz występowania zmiennych POST
         $ip_table = array('195.149.229.109', '148.251.96.163', '178.32.201.77',
             '46.248.167.59', '46.29.19.106'); $_POST['id'];
-        if (in_array($_SERVER['REMOTE_ADDR'], $ip_table) && !empty($request)){
-            $seller_id = $request['id'];
-            $tr_status = $request['tr_status'];
-            $tr_id = $request['tr_id'];
-            $tr_amount = $request['tr_amount'];
-            $tr_paid = $request['tr_paid'];
-            $tr_error = $request['tr_error'];
-            $tr_date = $request['tr_date'];
-            $tr_desc = $request['tr_desc'];
-            $tr_crc = $request['tr_crc'];
-            $tr_email = $request['tr_email'];
-            $md5sum = $request['md5sum'];
+        if (in_array($_SERVER['REMOTE_ADDR'], $ip_table) && !empty($_POST)){
+            $seller_id = $_POST['id'];
+            $tr_status = $_POST['tr_status'];
+            $tr_id = $_POST['tr_id'];
+            $tr_amount = $_POST['tr_amount'];
+            $tr_paid = $_POST['tr_paid'];
+            $tr_error = $_POST['tr_error'];
+            $tr_date = $_POST['tr_date'];
+            $tr_desc = $_POST['tr_desc'];
+            $tr_crc = $_POST['tr_crc'];
+            $tr_email = $_POST['tr_email'];
+            $md5sum = $_POST['md5sum'];
 
             $payment = Payment::where('tr_id', $tr_id)->first();
+            \Log::info($payment);
 
             if($tr_status=='TRUE' && $tr_error=='none'){
                 if($payment->md5sum == $md5sum && $payment->tr_crc == $tr_crc && $payment->seller_id = $seller_id) {
