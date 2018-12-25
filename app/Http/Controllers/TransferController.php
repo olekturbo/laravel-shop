@@ -137,9 +137,6 @@ class TransferController extends Controller
                     $payment->tr_date = $tr_date;
                     $payment->tr_desc = $tr_desc;
                     $payment->tr_email = $tr_email;
-
-                    /* MAIL */
-                    Mail::to($tr_email)->send(new OrderPaid());
                 }
             }
             else
@@ -149,6 +146,9 @@ class TransferController extends Controller
             }
 
             $payment->save();
+
+            /* MAIL */
+            Mail::to($tr_email)->send(new OrderPaid());
         }
         echo 'TRUE'; // odpowiedź dla serwera o odebraniu danych
     }
