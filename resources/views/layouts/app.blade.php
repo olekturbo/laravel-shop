@@ -28,7 +28,18 @@
                 <img src="{{ asset('images/logo.png') }}" alt="logo">
             </a>
             <div class="nav-option order-lg-last">
+                @auth
                 <a class="nav-item nav-link" href="#"><i class="fa fa-user"></i> twoje konto</a>
+                <a class="nav-item nav-link"  href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+                    <i class="fas fa-sign-out-alt"></i> Wyloguj
+                </a>
+                <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+                @else
+                <a class="nav-item nav-link" href="{{ route('register') }}"><i class="fa fa-user"></i> rejestracja</a>
+                <a class="nav-item nav-link" href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> logowanie</a>
+                @endauth
                 <a class="nav-item nav-link" href="{{ route('product.showCart') }}"><i class="fa fa-shopping-cart"></i> koszyk @if(session()->get('cart')) <span id="totalQty" class="shopping-cart-amount ml-1">{{ session()->get('cart') ? session()->get('cart')->totalQty : "" }}</span> @endif </a>
             </div>
             <div class="collapse navbar-collapse" id="navbarToggler">

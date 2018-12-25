@@ -401,11 +401,22 @@ only screen and (max-width: 760px),
 /* End Toast */
 
 /* Custom Button */
-.btn-template {
+.btn-template, .btn-template:hover {
     background: #ff5500;
     color: white;
 }
+.btn-link {
+    color: #ff5500;
+}
+.btn-link:hover {
+    color: black;
+}
 /* End Custom Button */
+
+/* Selection */
+::-moz-selection { background: #ff5500; color: white; }
+::selection { background: #ff5500; color: white; }
+/* End Selection */
 
 /* TPAY */
 #channels div.selected {

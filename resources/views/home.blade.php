@@ -28,7 +28,7 @@
                 <h2 class="item-header">bestsellery</h2>
                 <hr class="pb-5">
             </div>
-           @foreach($products as $product)
+            @foreach($products as $product)
                 <a href="{{ route('product', [$product->id, str_slug($product->name)]) }}" class="col-md-4">
                     <img src="{{ Voyager::image($product->front_image) }}" class="img-fluid rounded"  onmouseover="this.src='{{ Voyager::image($product->back_image) }}';" onmouseout="this.src='{{ Voyager::image($product->front_image) }}'">
                     <div class="item-title text-uppercase">
@@ -38,25 +38,25 @@
                         {{ $product->discount_price ?? $product->price }} PLN
                     </div>
                 </a>
-           @endforeach
+            @endforeach
         </div>
     </div>
     <section class="home-newsletter">
-       <div class="container-fluid">
-           <div class="row">
-               <div class="col-sm-12">
-                   <form action="" method="post">
-                       <div class="single">
-                           <h2>Dołącz do naszego newslettera</h2>
-                           <div class="input-group">
-                               <input type="email" class="form-control" placeholder="Wprowadź adres-email">
-                               <span class="input-group-btn"><button class="btn btn-theme" type="submit">subskrybuj</button></span>
-                           </div>
-                       </div>
-                   </form>
-               </div>
-           </div>
-       </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <form action="" method="post">
+                        <div class="single">
+                            <h2>Dołącz do naszego newslettera</h2>
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Wprowadź adres-email">
+                                <span class="input-group-btn"><button class="btn btn-theme" type="submit">subskrybuj</button></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </section>
     <div class="container">
         <div class="row contact-row">

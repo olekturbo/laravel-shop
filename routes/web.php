@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'WelcomeController@index')->name('welcome');
+Route::get('/home', 'WelcomeController@index')->name('welcome');
 
 Route::get('/product/{id}/{slug?}', 'ProductController@show')->name('product');
 Route::get('/cart', 'ProductController@showCart')->name('product.showCart');
@@ -26,3 +27,5 @@ Route::get('/order/error', 'TransferController@error')->name('transfer.error');
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Auth::routes(['verify' => 'true']);

@@ -16,7 +16,7 @@ class WelcomeController extends Controller
     {
         $products = Product::orderBy('created_at', 'desc')->take(6)->get();
 
-        return view('welcome', compact('products'));
+        return view('home', compact('products'));
     }
 
     /**

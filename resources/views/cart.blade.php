@@ -19,7 +19,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($products->items as $size => $product)
+                @foreach($products->items as $product)
                     @foreach($product as $size => $single_product)
                     <tr>
                         <form id="transferForm" method="POST" action="{{ route('transfer.order') }}">
