@@ -119,7 +119,7 @@ class TransferController extends Controller
             );
 
             if($tr_status=='TRUE' && $tr_error=='none'){
-                if($checkMD5) {
+                if($checkMD5 !== false) {
                     $payment->tr_status = $tr_status;
                     $payment->tr_amount = $tr_amount;
                     $payment->tr_paid = $tr_paid;
