@@ -22,10 +22,10 @@ class CreatePaymentsTable extends Migration
             $table->string('tr_paid')->nullable();
             $table->string('tr_error')->nullable();
             $table->dateTime('tr_date')->nullable();
-            $table->dateTime('tr_desc')->nullable();
-            $table->dateTime('tr_crc')->nullable();
-            $table->dateTime('tr_email')->nullable();
-            $table->dateTime('md5sum')->nullable();
+            $table->string('tr_desc')->nullable();
+            $table->string('tr_crc')->nullable();
+            $table->string('tr_email')->nullable();
+            $table->string('md5sum')->nullable();
             $table->timestamps();
         });
     }
