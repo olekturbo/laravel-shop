@@ -15,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -45,7 +45,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($category, $id)
     {
         $product = Product::find($id);
         if($product) {

@@ -2,8 +2,8 @@
 @section('content')
     <div class="container">
         <ul class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">{{ $product->category->name }}</a></li>
+            <li><a href="{{ route('welcome') }}">Home</a></li>
+            <li><a href="{{ route('category', $product->category->name) }}">{{ $product->category->name }}</a></li>
             <li>{{ $product->name }}</li>
         </ul>
         <form method="POST" action="{{ route('product.addToCart', $product->id) }}">
@@ -71,7 +71,7 @@
                 <h1>PRODUKTY PODOBNE</h1>
               <div class="row">
                   @foreach($similar_products as $similar_product)
-                 <a href="{{ route('product', [$similar_product->id, str_slug($similar_product->name)]) }}">
+                 <a href="{{ route('product', [$similar_product->category->name, $similar_product->id, str_slug($similar_product->name)]) }}">
                      <div class="col-md-3">
                          <img class="w-100" src="{{ Voyager::image($similar_product->front_image) }}">
                          <p class="text-center text-uppercase">{{ $similar_product->name }}</p>

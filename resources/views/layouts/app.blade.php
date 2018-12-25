@@ -37,15 +37,15 @@
                     {{ csrf_field() }}
                 </form>
                 @else
-                <a class="nav-item nav-link" href="{{ route('register') }}"><i class="fa fa-user"></i> rejestracja</a>
-                <a class="nav-item nav-link" href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> logowanie</a>
+                <a class="nav-item nav-link @if(\Request::route()->getName() == 'register') active @endif" href="{{ route('register') }}"><i class="fa fa-user"></i> rejestracja</a>
+                <a class="nav-item nav-link @if(\Request::route()->getName() == 'login') active @endif" href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> logowanie</a>
                 @endauth
-                <a class="nav-item nav-link" href="{{ route('product.showCart') }}"><i class="fa fa-shopping-cart"></i> koszyk @if(session()->get('cart')) <span id="totalQty" class="shopping-cart-amount ml-1">{{ session()->get('cart') ? session()->get('cart')->totalQty : "" }}</span> @endif </a>
+                <a class="nav-item nav-link @if(\Request::route()->getName() == 'cart') active @endif" href="{{ route('product.showCart') }}"><i class="fa fa-shopping-cart"></i> koszyk @if(session()->get('cart')) <span id="totalQty" class="shopping-cart-amount ml-1">{{ session()->get('cart') ? session()->get('cart')->totalQty : "" }}</span> @endif </a>
             </div>
             <div class="collapse navbar-collapse" id="navbarToggler">
                 <div class="navbar-nav text-center text-right pr-3">
                     @foreach($categories as $category)
-                        <a class="nav-item nav-link @if($loop->first) active @endif" href="#">{{ $category->name }}</a>
+                        <a class="nav-item nav-link @if(array_key_exists('category', \Request::route()->parameters) && (\Request::route()->parameters['category'] === $category->name)) active @endif" href="{{ route('category', $category->name) }}">{{ $category->name }}</a>
                     @endforeach
                 </div>
             </div>

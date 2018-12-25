@@ -10721,3 +10721,22 @@ only screen and (max-width: 760px),
     display:none;
 }
 /* END TPAY */
+
+/* PAGINATION */
+.page-item.active .page-link {
+    background: #ff5500;
+    border-color: #ff5500;
+}
+.page-link {
+    color: #ff5500;
+}
+.page-link:hover {
+    color: #ff5500;
+}
+.page-link:focus {
+    box-shadow: none;
+}
+.pagination {
+    float: right;
+}
+/* END PAGINATION */
