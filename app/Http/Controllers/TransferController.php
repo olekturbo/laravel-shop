@@ -155,9 +155,6 @@ class TransferController extends Controller
     public function success() {
         session()->forget('cart');
         $order = session()->get('order');
-        $email = session()->get('email');
-        /* MAIL */
-        Mail::to($email)->send(new OrderPaid());
         return view('transfers.success', compact('order'));
     }
 
