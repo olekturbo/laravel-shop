@@ -119,8 +119,6 @@ class TransferController extends Controller
                 $tr_id
             );
 
-            \Log::info($checkMD5);
-
             if($tr_status=='TRUE' && $tr_error=='none'){
                 if($checkMD5 !== false) {
                     $payment->tr_status = $tr_status;
@@ -137,6 +135,7 @@ class TransferController extends Controller
                 $payment->tr_error = $tr_error;
             }
 
+            $request->session()->forget('cart');
             $payment->save();
         }
         echo 'TRUE'; // odpowiedź dla serwera o odebraniu danych
