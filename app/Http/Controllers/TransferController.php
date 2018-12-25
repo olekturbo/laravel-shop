@@ -118,6 +118,8 @@ class TransferController extends Controller
                 $tr_crc
             );
 
+            \Log::info($checkMD5);
+
             if($tr_status=='TRUE' && $tr_error=='none'){
                 if($checkMD5 !== false) {
                     $payment->tr_status = $tr_status;
