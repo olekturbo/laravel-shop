@@ -87,13 +87,17 @@ class TransferController extends Controller
 
             $items = $products->items;
             foreach($items as $sizes) {
+                $quantities = 0;
                 foreach($sizes as $size => $item) {
                     $order->products()->attach($item['item']->id, [
                         'quantity' => $item['qty'],
                         'size' => $size
                     ]);
-                    $item['item']->quantity -= $item['qty'];
-                    $item['item']->save();
+                    $quantities += $item['qty'];
+                    if($size === key(array_slice( $sizes, -1, 1, TRUE))) {
+                        $item['item']->quantity -= $quantities;
+                        $item['item']->save();
+                    }
                 }
             }
 
