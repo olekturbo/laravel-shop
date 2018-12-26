@@ -10,7 +10,7 @@
         | Produkt       | Zdjęcie podglądowe         | Rozmiar  | Cena łączna  | Cena jednostkowa  | Ilość  |
         | ------------- | ------------- | ---------- |:--------:| ------------ | ----------------- |:------:|
         @foreach($products as $product)
-        | <a href="{{ route('product', [$product->id, str_slug($product->name)]) }}">{{ strtoupper($product->name) }}</a>     | <img src="{{ Voyager::image($product->front_image) }}" width="100">      |      {{ $product->pivot->size }} | {{ $product->discount_price ? $product->discount_price * $product->pivot->quantity : $product->price * $product->pivot->quantity }} zł | {{ $product->discount_price ?? $product->price }} zł | {{ $product->pivot->quantity }} |
+        | <a href="{{ route('product', [$product->category->name, $product->id, str_slug($product->name)]) }}">{{ strtoupper($product->name) }}</a>     | <img src="{{ Voyager::image($product->front_image) }}" width="100">      |      {{ $product->pivot->size }} | {{ $product->discount_price ? $product->discount_price * $product->pivot->quantity : $product->price * $product->pivot->quantity }} zł | {{ $product->discount_price ?? $product->price }} zł | {{ $product->pivot->quantity }} |
         @endforeach
     @endcomponent
 
