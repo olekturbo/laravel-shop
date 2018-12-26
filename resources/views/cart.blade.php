@@ -4,6 +4,7 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-12">
+            <form method="GET" action="{{ route('product.order') }}">
             @if(isset($products) && !empty($products->items))
             <h1 class="text-center">ZAWARTOŚĆ TWOJEGO KOSZYKA</h1>
             <table class="mt-5">
@@ -43,12 +44,13 @@
                 <div class="row mt-5">
                     <div class="col-md-12 text-right">
                         <h5 name="totalPrice" id="totalPrice">DO ZAPŁATY: {{ $products->totalPrice }} zł</h5>
-                        <a href="{{ route('product.order') }}"><button class="btn btn-template mt-3">ZŁÓŻ ZAMÓWIENIE</button></a>
+                        <button type="submit" class="btn btn-template mt-3">ZŁÓŻ ZAMÓWIENIE</button>
                     </div>
                 </div>
             @else
                 <h5 class="text-center">KOSZYK JEST PUSTY</h5>
             @endif
+            </form>
         </div>
     </div>
 </div>

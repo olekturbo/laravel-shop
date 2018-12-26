@@ -55,11 +55,13 @@
                             @endif
                         </div>
                     </div>
+                    @if($product->quantity > 0)
                     <div class="row mt-5">
                         <div class="col-md-12">
                             <button id="checkBtn" type="submit" class="btn btn-template btn-lg"><i class="fas fa-shopping-cart"></i> Dodaj do koszyka</button>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         </form>
