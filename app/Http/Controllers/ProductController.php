@@ -158,6 +158,9 @@ class ProductController extends Controller
                 if($item['qty'] > $item['item']->quantity) {
                     return back()->with('error', 'Próbowano zamówić większą ilość produktów, niż jest to możliwe!');
                 }
+                if($item['qty'] <= 0) {
+                    return back()->with('error', 'Próbowano zamówić nieprawidłową liczbę produktów!');
+                }
             }
         }
 
