@@ -122,13 +122,28 @@ $('.quantity-input').change(function(){
         data : {
             'value':value,
         },
+        beforeSend:function() {
+            $('body').css('cursor', 'progress');
+        },
         success:function(data) {
-            $('#totalPrice').text('DO ZAPŁATY: ' + Math.round(data.totalPrice * 100) / 100 + " zł");
-            $('#totalQty').text(data.totalQty);
-            $('#product' + data.id + data.size).text(Math.round(data.price * 100) / 100 + " zł" );
-            $('.ajaxMessage').fadeIn('normal', function(){
-                $('.ajaxMessage').delay(1000).fadeOut();
-            });
+            if(data.qty > 0 && data.totalQty > 0) {
+                $('#totalPrice').text('DO ZAPŁATY: ' + Math.round(data.totalPrice * 100) / 100 + " zł");
+                $('#totalQty').text(data.totalQty);
+                $('#price' + data.id + data.size).text(Math.round(data.price * 100) / 100 + " zł");
+                $('.ajaxMessage').fadeIn('normal', function () {
+                    $('.ajaxMessage').delay(1000).fadeOut();
+                });
+            }
+            else {
+                $('#totalPrice').text("? zł");
+                $('#totalQty').text("?");
+                $('#price' + data.id + data.size).text("? zł");
+                $('#quantity' + data.id + data.size).val(0);
+                $('.ajaxMessage').fadeIn('normal', function () {
+                    $('.ajaxMessage').delay(1000).fadeOut();
+                });
+            }
+            $('body').css('cursor', 'default');
         },
         error:function(data) {
             console.log(data.error);
