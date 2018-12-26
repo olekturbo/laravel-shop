@@ -47,8 +47,12 @@
                             </div>
                         </div>
                         <div class="col-md-6">
+                            @if($product->quantity > 0)
                             <h5>ILOŚĆ</h5>
                             <input name="quantity" class="w-50" type="number" min="1" max="{{ $product->quantity }}" step="1" value="1">
+                            @else
+                            <h5>BRAK NA MAGAZYNIE</h5>
+                            @endif
                         </div>
                     </div>
                     <div class="row mt-5">

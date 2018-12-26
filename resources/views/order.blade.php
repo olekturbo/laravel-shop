@@ -22,7 +22,7 @@
                             <tr>
                                 <form id="transferForm" method="POST" action="{{ route('transfer.order') }}">
                                     @csrf
-                                    <td data-column="Produkt" class="text-uppercase"><a href="{{ route('product', [$single_product['item']->id, str_slug($single_product['item']->name)]) }}">{{ $single_product['item']->name }}</a></td>
+                                    <td data-column="Produkt" class="text-uppercase"><a href="{{ route('product', [$single_product['item']->category->name,$single_product['item']->id, str_slug($single_product['item']->name)]) }}">{{ $single_product['item']->name }}</a></td>
                                     <td data-column="Zdjęcie podglądowe"><img src="{{ Voyager::image($single_product['item']->front_image) }}" width="100"></td>
                                     <td data-column="Rozmiar">{{ $size }}</td>
                                     <td data-column="Cena łączna" id="product{{ $single_product['item']->id }}{{ $size }}">{{ $single_product['price'] }} zł</td>
