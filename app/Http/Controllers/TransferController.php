@@ -92,6 +92,8 @@ class TransferController extends Controller
                         'quantity' => $item['qty'],
                         'size' => $size
                     ]);
+                    $item['item']->quantity -= $item['qty'];
+                    $item['item']->save();
                 }
             }
 
