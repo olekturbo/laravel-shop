@@ -464,4 +464,7 @@ only screen and (max-width: 760px),
 .pagination {
     float: right;
 }
+.color-red {
+    color: red;
+}
 /* END PAGINATION */

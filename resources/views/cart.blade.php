@@ -4,9 +4,11 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-12">
-            <form method="GET" action="{{ route('product.order') }}">
             @if(isset($products) && !empty($products->items))
             <h1 class="text-center">ZAWARTOŚĆ TWOJEGO KOSZYKA</h1>
+            @if(session()->has('error'))
+            <h5 class="text-center color-red">{{ session()->get('error') }}</h5>
+            @endif
             <table class="mt-5">
                 <thead>
                     <tr>
@@ -44,13 +46,12 @@
                 <div class="row mt-5">
                     <div class="col-md-12 text-right">
                         <h5 name="totalPrice" id="totalPrice">DO ZAPŁATY: {{ $products->totalPrice }} zł</h5>
-                        <button type="submit" class="btn btn-template mt-3">ZŁÓŻ ZAMÓWIENIE</button>
+                        <a href="{{ route('product.order') }}"><button type="submit" class="btn btn-template mt-3">ZŁÓŻ ZAMÓWIENIE</button></a>
                     </div>
                 </div>
             @else
                 <h5 class="text-center">KOSZYK JEST PUSTY</h5>
             @endif
-            </form>
         </div>
     </div>
 </div>

@@ -152,6 +152,15 @@ class ProductController extends Controller
     public function order(Request $request) {
         $products = $request->session()->get('cart');
 
+        // Validate
+        foreach($products->items as $sizes) {
+            foreach($sizes as $item) {
+                if($item['qty'] > $item['item']->quantity) {
+                    return back()->with('error', 'Próbowano zamówić większą ilość produktów, niż jest to możliwe!');
+                }
+            }
+        }
+
         return view('order', compact('products'));
     }
 }
