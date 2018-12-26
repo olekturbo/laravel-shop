@@ -135,7 +135,7 @@ $('.quantity-input').change(function(){
                 });
             }
             else {
-                $('#totalPrice').text("? zł");
+                $('#totalPrice').text("DO ZAPŁATY: ? zł");
                 $('#totalQty').text("?");
                 $('#price' + data.id + data.size).text("? zł");
                 $('#quantity' + data.id + data.size).val(0);
