@@ -6,6 +6,12 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Logowanie</div>
+                @if ($errors->has('msg'))
+                    <div class="alert alert-warning">
+                        {{ $errors->first('msg') }}
+                        <button type="button" data-dismiss="alert" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                    </div>
+                @endif
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
