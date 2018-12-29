@@ -17,8 +17,11 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        if(Auth::user() && !is_null(Auth::user()->provider && is_null(Auth::user()->city)))
+            return redirect()->route('provider.fill-data');
+
         if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+            return redirect('/');
         }
 
         return $next($request);
