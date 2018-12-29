@@ -27,7 +27,7 @@ class SocialAccountService extends Model
 
             $user->accounts()->create([
                 'provider_id'   => $providerUser->getId(),
-                'provider_name' => $provider,
+                'provider' => $provider,
             ]);
 
             return $user;
