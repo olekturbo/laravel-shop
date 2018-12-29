@@ -23,6 +23,8 @@ Route::post('/transfer/order/callback', 'TransferController@callback')->name('tr
 Route::get('/transfer/order/success', 'TransferController@success')->name('transfer.success');
 Route::get('/transfer/order/error', 'TransferController@error')->name('transfer.error');
 Route::get('/kategoria/{category}', 'CategoryController@show')->name('category');
+Route::get('/login/{provider}',          'Auth\SocialAccountController@redirectToProvider')->name('provider.login');
+Route::get('/login/{provider}/callback', 'Auth\SocialAccountController@handleProviderCallback')->name('provider.callback');
 
 Auth::routes(['verify' => 'true']);
 

@@ -64,6 +64,14 @@
                         </div>
                     </form>
                 </div>
+                <div class="row mb-5 ml-2 mt-5 mr-2 text-center">
+                    <div class="col-md-12">
+                        <a href="{{ route('provider.login', 'github') }}"  class="btn btn-template btn-sm"><i class="fab fa-github"></i> Github</a>
+                        <a href="{{ route('provider.login', 'google') }}"  class="btn btn-template btn-sm"><i class="fab fa-google"></i> Google</a>
+                        <a href="{{ route('provider.login', 'facebook') }}"  class="btn btn-template btn-sm"><i class="fab fa-facebook"></i> Facebook</a>
+                        <a href="{{ route('provider.login', 'twitter') }}"  class="btn btn-template btn-sm"><i class="fab fa-twitter"></i> Twitter</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
