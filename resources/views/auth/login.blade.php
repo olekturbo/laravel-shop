@@ -77,17 +77,17 @@
                 <div class="card-header">Logowanie przez Providera</div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-3">
-                            <a href="{{ route('provider.login', 'github') }}"  class="btn btn-template btn-sm"><i class="fab fa-github"></i> Github</a>
+                        <div class="col-md-3 text-center">
+                            <a href="{{ route('provider.login', 'github') }}"  class="btn btn-social btn-github"><span class="fab fa-github"></span> Github</a>
                         </div>
-                        <div class="col-md-3">
-                            <a href="{{ route('provider.login', 'google') }}"  class="btn btn-template btn-sm"><i class="fab fa-google"></i> Google</a>
+                        <div class="col-md-3 text-center">
+                            <a href="{{ route('provider.login', 'google') }}"  class="btn btn-social btn-google"><span class="fab fa-google"></span> Google</a>
                         </div>
-                        <div class="col-md-3">
-                            <a href="{{ route('provider.login', 'facebook') }}"  class="btn btn-template btn-sm"><i class="fab fa-facebook"></i> Facebook</a>
+                        <div class="col-md-3 text-center">
+                            <a href="{{ route('provider.login', 'facebook') }}"  class="btn btn-social btn-facebook"><span class="fab fa-facebook"></span> Facebook</a>
                         </div>
-                        <div class="col-md-3">
-                            <a href="{{ route('provider.login', 'twitter') }}"  class="btn btn-template btn-sm"><i class="fab fa-twitter"></i> Twitter</a>
+                        <div class="col-md-3 text-center">
+                            <a href="{{ route('provider.login', 'twitter') }}"  class="btn btn-social btn-twitter"><span class="fab fa-twitter"></span> Twitter</a>
                         </div>
                     </div>
                 </div>

@@ -17,6 +17,7 @@ mix.styles([
     'node_modules/bootstrap/dist/css/bootstrap.css',
     'node_modules/slider-pro/dist/css/slider-pro.css',
     'node_modules/icheck-bootstrap/icheck-bootstrap.css',
+    'node_modules/bootstrap-social/bootstrap-social.css',
     'resources/css/custom.css',
 ], 'public/css/template.css');
 
