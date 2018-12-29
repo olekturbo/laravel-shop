@@ -141,6 +141,10 @@ class SocialAccountController extends Controller
         return view('auth.fill-data');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function storeData(Request $request) {
         $authUser = Auth::user();
         $authUser->update([
