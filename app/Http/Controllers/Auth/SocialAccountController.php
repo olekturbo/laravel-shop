@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\SocialAccountService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -22,7 +23,7 @@ class SocialAccountController extends Controller
      *
      * @return Response
      */
-    public function handleProviderCallback(\App\SocialAccountsService $accountService, $provider)
+    public function handleProviderCallback(SocialAccountService $accountService, $provider)
     {
 
         try {
