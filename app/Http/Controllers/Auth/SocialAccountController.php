@@ -37,7 +37,7 @@ class SocialAccountController extends Controller
     public function redirectToProvider($driver)
     {
         if( ! $this->isProviderAllowed($driver) ) {
-            return $this->sendFailedResponse("{$driver} is not currently supported");
+            return $this->sendFailedResponse("{$driver} aktualnie nie jest wspierany");
         }
 
         try {
@@ -64,7 +64,7 @@ class SocialAccountController extends Controller
 
         // check for email in returned user
         return empty( $user->email )
-            ? $this->sendFailedResponse("No email id returned from {$driver} provider.")
+            ? $this->sendFailedResponse("Brak adresu email przypisanego do konta {$driver}.")
             : $this->loginOrCreateAccount($user, $driver);
     }
 
@@ -87,7 +87,7 @@ class SocialAccountController extends Controller
     protected function sendFailedResponse($msg = null)
     {
         return redirect()->route('login')
-            ->withErrors(['msg' => $msg ?: 'Unable to login, try with another provider to login.']);
+            ->withErrors(['msg' => $msg ?: 'Niemożliwa próba zalogowania. Przepraszamy.']);
     }
 
     protected function loginOrCreateAccount($providerUser, $driver)
