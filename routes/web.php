@@ -12,7 +12,7 @@
 */
 
 
-Route::get('/', 'WelcomeController@index')->name('welcome');
+Route::get('/', 'WelcomeController@index')->name('welcome')->middleware('social');
 Route::get('/kategoria/{category}/produkt/{id}/{slug?}', 'ProductController@show')->name('product');
 Route::get('/koszyk', 'ProductController@showCart')->name('product.showCart');
 Route::post('/dodaj-do-koszyka/{id}', 'ProductController@addToCart')->name('product.addToCart');
