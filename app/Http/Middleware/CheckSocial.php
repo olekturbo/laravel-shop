@@ -16,9 +16,11 @@ class CheckSocial
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user() && !null(Auth::user()->provider) && null(Auth::user()->city)) {
+        if(Auth::user())
+            if(!is_null(Auth::user()->provider))
+                if(is_null(Auth::user()->city))
             return redirect()->route('provider.fill-data');
-        }
+
         return $next($request);
     }
 }
