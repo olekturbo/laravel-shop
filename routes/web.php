@@ -11,23 +11,21 @@
 |
 */
 
-Route::group(['middleware' => ['social']], function () {
-    Route::get('/', 'WelcomeController@index')->name('welcome');
-    Route::get('/kategoria/{category}/produkt/{id}/{slug?}', 'ProductController@show')->name('product');
-    Route::get('/koszyk', 'ProductController@showCart')->name('product.showCart');
-    Route::post('/dodaj-do-koszyka/{id}', 'ProductController@addToCart')->name('product.addToCart');
-    Route::get('/aktualizuj-koszyk/{id}/{size}', 'ProductController@updateCart')->name('product.updateCart');
-    Route::delete('/usun-z-koszyka/{id}/{size}', 'ProductController@deleteFromCart')->name('product.deleteFromCart');
-    Route::get('/zamow/nowy', 'ProductController@order')->name('product.order');
-    Route::post('/transfer/order/new', 'TransferController@order')->name('transfer.order');
-    Route::post('/transfer/order/callback', 'TransferController@callback')->name('transfer.callback');
-    Route::get('/transfer/order/success', 'TransferController@success')->name('transfer.success');
-    Route::get('/transfer/order/error', 'TransferController@error')->name('transfer.error');
-    Route::get('/kategoria/{category}', 'CategoryController@show')->name('category');
-    Route::get('/login/fill-data', 'Auth\FillSocialDataController@fillData')->name('provider.fill-data');
-    Route::post('/login/store-data', 'Auth\FillSocialDataController@storeData')->name('provider.store-data');
-});
 
+Route::get('/', 'WelcomeController@index')->name('welcome');
+Route::get('/kategoria/{category}/produkt/{id}/{slug?}', 'ProductController@show')->name('product');
+Route::get('/koszyk', 'ProductController@showCart')->name('product.showCart');
+Route::post('/dodaj-do-koszyka/{id}', 'ProductController@addToCart')->name('product.addToCart');
+Route::get('/aktualizuj-koszyk/{id}/{size}', 'ProductController@updateCart')->name('product.updateCart');
+Route::delete('/usun-z-koszyka/{id}/{size}', 'ProductController@deleteFromCart')->name('product.deleteFromCart');
+Route::get('/zamow/nowy', 'ProductController@order')->name('product.order');
+Route::post('/transfer/order/new', 'TransferController@order')->name('transfer.order');
+Route::post('/transfer/order/callback', 'TransferController@callback')->name('transfer.callback');
+Route::get('/transfer/order/success', 'TransferController@success')->name('transfer.success');
+Route::get('/transfer/order/error', 'TransferController@error')->name('transfer.error');
+Route::get('/kategoria/{category}', 'CategoryController@show')->name('category');
+Route::get('/login/fill-data', 'Auth\FillSocialDataController@fillData')->name('provider.fill-data');
+Route::post('/login/store-data', 'Auth\FillSocialDataController@storeData')->name('provider.store-data');
 Route::get('/login/{provider}',          'Auth\SocialAccountController@redirectToProvider')->name('provider.login');
 Route::get('/login/{provider}/callback', 'Auth\SocialAccountController@handleProviderCallback')->name('provider.callback');
 
