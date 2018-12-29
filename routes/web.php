@@ -13,6 +13,7 @@
 
 Route::group(['middleware' => ['social']], function () {
     Route::get('/', 'WelcomeController@index')->name('welcome');
+    Route::get('/home', 'WelcomeController@index')->name('welcome');
     Route::get('/kategoria/{category}/produkt/{id}/{slug?}', 'ProductController@show')->name('product');
     Route::get('/koszyk', 'ProductController@showCart')->name('product.showCart');
     Route::post('/dodaj-do-koszyka/{id}', 'ProductController@addToCart')->name('product.addToCart');
