@@ -88,7 +88,7 @@ class SocialAccountController extends Controller
     protected function sendFailedResponse($msg = null)
     {
         return redirect()->route('login')
-            ->withErrors(['msg' => $msg ?: 'Niemożliwa próba zalogowania. Przepraszamy.']);
+            ->withErrors(['msg' => $msg ?: 'Niemożliwa próba zalogowania. Spróbuj ponownie.']);
     }
 
     protected function loginOrCreateAccount($providerUser, $driver)
