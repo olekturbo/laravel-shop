@@ -49,13 +49,13 @@
                    <div class="row mt-5">
                        <div class="col-md-6">
                            <div class="form-group">
-                               <input form="transferForm" name="first_name" type="text" id="first_name" class="form-control" required>
+                               <input form="transferForm" name="first_name" type="text" id="first_name" class="form-control" required value="{{ $firstName }}">
                                <label class="form-control-placeholder" for="first_name">Imię</label>
                            </div>
                        </div>
                        <div class="col-md-6">
                            <div class="form-group">
-                               <input form="transferForm" name="last_name" type="text" id="last_name" class="form-control" required>
+                               <input form="transferForm" name="last_name" type="text" id="last_name" class="form-control" required value="{{ $lastName }}">
                                <label class="form-control-placeholder" for="last_name">Nazwisko</label>
                            </div>
                        </div>

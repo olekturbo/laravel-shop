@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Cart;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -151,6 +152,10 @@ class ProductController extends Controller
 
     public function order(Request $request) {
         $products = $request->session()->get('cart');
+        $fullName = Auth::user()->name;
+        $explodedName = explode(' ', $fullName);
+        $firstName = isset($explodedName[0]) ? $explodedName[0] : "";
+        $lastName = isset($explodedName[1]) ? $explodedName[1] : "";
 
         // Validate
         foreach($products->items as $sizes) {
@@ -164,6 +169,6 @@ class ProductController extends Controller
             }
         }
 
-        return view('order', compact('products'));
+        return view('order', compact('products', 'firstName', 'lastName'));
     }
 }
