@@ -12,6 +12,7 @@
 */
 
 Route::group(['middleware' => ['social']], function () {
+    Route::get('/', 'WelcomeController@index')->name('welcome');
     Route::get('/kategoria/{category}/produkt/{id}/{slug?}', 'ProductController@show')->name('product');
     Route::get('/koszyk', 'ProductController@showCart')->name('product.showCart');
     Route::post('/dodaj-do-koszyka/{id}', 'ProductController@addToCart')->name('product.addToCart');
@@ -25,11 +26,10 @@ Route::group(['middleware' => ['social']], function () {
     Route::get('/kategoria/{category}', 'CategoryController@show')->name('category');
 });
 
-Route::get('/', 'WelcomeController@index')->name('welcome');
 Route::get('/login/{provider}',          'Auth\SocialAccountController@redirectToProvider')->name('provider.login');
 Route::get('/login/{provider}/callback', 'Auth\SocialAccountController@handleProviderCallback')->name('provider.callback');
-Route::get('/login/fill-data', 'Auth\SocialAccountController@fillData')->name('provider.fill-data');
-Route::post('/login/store-data', 'Auth\SocialAccountController@storeData')->name('provider.store-data');
+Route::get('/login/fill-data', 'Auth\LoginController@fillData')->name('provider.fill-data');
+Route::post('/login/store-data', 'Auth\LoginController@storeData')->name('provider.store-data');
 
 Auth::routes(['verify' => 'true']);
 
