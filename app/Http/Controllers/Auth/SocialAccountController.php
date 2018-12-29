@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use Exception;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -131,5 +132,24 @@ class SocialAccountController extends Controller
     private function isProviderAllowed($driver)
     {
         return in_array($driver, $this->providers) && config()->has("services.{$driver}");
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function fillData() {
+        return view('auth.fill-data');
+    }
+
+    public function storeData(Request $request) {
+        $authUser = Auth::user();
+        $authUser->update([
+           'phone' => $request->phone,
+           'city' => $request->city,
+           'post_code' => $request->post_code,
+           'street' => $request->street
+        ]);
+
+        return redirect()->route('welcome');
     }
 }
