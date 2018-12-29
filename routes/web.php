@@ -24,12 +24,13 @@ Route::group(['middleware' => ['social']], function () {
     Route::get('/transfer/order/success', 'TransferController@success')->name('transfer.success');
     Route::get('/transfer/order/error', 'TransferController@error')->name('transfer.error');
     Route::get('/kategoria/{category}', 'CategoryController@show')->name('category');
+    Route::get('/login/fill-data', 'Auth\FillSocialDataController@fillData')->name('provider.fill-data');
+    Route::post('/login/store-data', 'Auth\FillSocialDataController@storeData')->name('provider.store-data');
 });
 
 Route::get('/login/{provider}',          'Auth\SocialAccountController@redirectToProvider')->name('provider.login');
 Route::get('/login/{provider}/callback', 'Auth\SocialAccountController@handleProviderCallback')->name('provider.callback');
-Route::get('/login/fill-data', 'Auth\FillSocialDataController@fillData')->name('provider.fill-data');
-Route::post('/login/store-data', 'Auth\FillSocialDataController@storeData')->name('provider.store-data');
+
 
 Auth::routes(['verify' => 'true']);
 
