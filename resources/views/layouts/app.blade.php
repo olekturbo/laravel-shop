@@ -19,7 +19,9 @@
     @yield('css')
 </head>
 <body>
-    <div id="fakeLoader"></div>
+    <div id="preloader">
+        <div style="background-image: url({{ asset('images/preloader.gif') }});" id="status">&nbsp;</div>
+    </div>
     <div class="container pt-3">
         <nav class="navbar navbar-expand-lg navbar-light">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">

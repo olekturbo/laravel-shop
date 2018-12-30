@@ -1,13 +1,10 @@
-/* FAKE LOADER */
-$(window).load(function() {
-    $("#fakeLoader").fakeLoader({
-        timeToHide:500, //Time in milliseconds for fakeLoader disappear
-        zIndex:999, // Default zIndex
-        spinner:"spinner6",//Options: 'spinner1', 'spinner2', 'spinner3', 'spinner4', 'spinner5', 'spinner6', 'spinner7'
-        bgColor:"#ff5500", //Hex, RGB or RGBA colors
-    });
-});
-/* END FAKE LOADER */
+/* LOADER */
+$(window).on('load', function() { // makes sure the whole site is loaded
+    $('#status').fadeOut(); // will first fade out the loading animation
+    $('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
+    $('body').delay(350).css({'overflow':'visible'});
+})
+/* END LOADER */
 
 /* SLIDER PRO */
 $( '#product-slider' ).sliderPro({

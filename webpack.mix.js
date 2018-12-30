@@ -18,7 +18,6 @@ mix.styles([
     'node_modules/slider-pro/dist/css/slider-pro.css',
     'node_modules/icheck-bootstrap/icheck-bootstrap.css',
     'node_modules/bootstrap-social/bootstrap-social.css',
-    'node_modules/fakeloader/fakeLoader.css',
     'resources/css/custom.css',
 ], 'public/css/template.css');
 
@@ -26,6 +25,5 @@ mix.js([
     'node_modules/jquery/dist/jquery.js',
     'node_modules/slider-pro/dist/js/jquery.sliderPro.js',
     'node_modules/cleave.js/dist/cleave.min.js',
-    'node_modules/fakeloader/fakeLoader.js',
     'resources/js/custom.js',
 ], 'public/js/template.js')
