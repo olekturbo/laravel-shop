@@ -16813,12 +16813,13 @@ JWPlayerVideo.prototype.replay = function() {
 /***/ (function(module, exports) {
 
 /* FAKE LOADER */
-
-$("#fakeLoader").fakeLoader({
-    timeToHide: 500, //Time in milliseconds for fakeLoader disappear
-    zIndex: 999, // Default zIndex
-    spinner: "spinner6", //Options: 'spinner1', 'spinner2', 'spinner3', 'spinner4', 'spinner5', 'spinner6', 'spinner7'
-    bgColor: "#ff5500" //Hex, RGB or RGBA colors
+$(window).load(function () {
+    $("#fakeLoader").fakeLoader({
+        timeToHide: 500, //Time in milliseconds for fakeLoader disappear
+        zIndex: 999, // Default zIndex
+        spinner: "spinner6", //Options: 'spinner1', 'spinner2', 'spinner3', 'spinner4', 'spinner5', 'spinner6', 'spinner7'
+        bgColor: "#ff5500" //Hex, RGB or RGBA colors
+    });
 });
 /* END FAKE LOADER */
 
