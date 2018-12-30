@@ -25,7 +25,7 @@
         </div>
         <div class="row pt-5 item-row">
             <div class="col-md-12 text-center">
-                <h2 class="item-header">bestsellery</h2>
+                <h2 class="item-header">najnowsze produkty</h2>
                 <hr class="pb-5">
             </div>
             @foreach($products as $product)

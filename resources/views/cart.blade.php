@@ -31,7 +31,7 @@
                         <td data-column="Cena łączna" id="product{{ $single_product['item']->id }}{{ $size }}">{{ $single_product['price'] }} zł</td>
                         <td data-column="Cena jednostkowa">{{ $single_product['item']->discount_price ?? $single_product['item']->price }} zł</td>
                         <td data-column="Ilość">
-                            <input data-url="{{ route('product.updateCart', [$single_product['item']->id, $size]) }}" class="quantity-input" style="width: 4em" type="number" max="{{ $single_product['item']->quantity }}" value="{{ $single_product['qty'] }}">
+                            <input id="quantity{{ $single_product['item']->id }}{{ $size }}" data-url="{{ route('product.updateCart', [$single_product['item']->id, $size]) }}" class="quantity-input" style="width: 4em" type="number" max="{{ $single_product['item']->quantity }}" value="{{ $single_product['qty'] }}">
                         </td>
                         <form action="{{ route('product.deleteFromCart', [$single_product['item']->id, $size]) }}" method="POST">
                             @csrf

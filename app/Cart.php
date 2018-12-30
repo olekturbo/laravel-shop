@@ -27,17 +27,23 @@ class Cart extends Model
                     $storedItem = $this->items[$item->id][$size];
                 }
             }
-            $storedItem['qty'] += $quantity;
-            $storedItem['price'] = $price * $storedItem['qty'];
-            $this->items[$item->id][$size] = $storedItem;
-            $this->totalQty += $quantity;
-            $this->totalPrice += $price * $quantity;
+            if($storedItem['qty'] + $quantity <= $storedItem['item']->quantity) {
+                $storedItem['qty'] += $quantity;
+                $storedItem['price'] = $price * $storedItem['qty'];
+                $this->items[$item->id][$size] = $storedItem;
+                $this->totalQty += $quantity;
+                $this->totalPrice += $price * $quantity;
+            }
         }
     }
 
     public function edit($item, $quantity, $size) {
-        if($quantity > 0) {
+
             $oldQuantity = $this->items[$item->id][$size]['qty'];
+
+            if($quantity < 0 || $quantity > $this->items[$item->id][$size]['item']->quantity) {
+                $quantity = 0;
+            }
 
             if($this->items) {
                 if(array_key_exists($item->id, $this->items) && array_key_exists($size, $this->items[$item->id])) {
@@ -50,7 +56,7 @@ class Cart extends Model
             $this->items[$item->id][$size] = $storedItem;
             $this->totalQty += $quantity - $oldQuantity;
             $this->totalPrice += ($item->discount_price ?? $item->price) * $quantity - ($item->discount_price ?? $item->price) * $oldQuantity;
-        }
+
     }
 
     public function remove($item, $size) {

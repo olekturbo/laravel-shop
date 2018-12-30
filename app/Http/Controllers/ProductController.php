@@ -152,10 +152,14 @@ class ProductController extends Controller
 
     public function order(Request $request) {
         $products = $request->session()->get('cart');
-        $fullName = Auth::user()->name;
-        $explodedName = explode(' ', $fullName);
-        $firstName = isset($explodedName[0]) ? $explodedName[0] : "";
-        $lastName = isset($explodedName[1]) ? $explodedName[1] : "";
+        $firstName = "";
+        $lastName = "";
+        if(Auth::check()) {
+            $fullName = Auth::user()->name;
+            $explodedName = explode(' ', $fullName);
+            $firstName = isset($explodedName[0]) ? $explodedName[0] : "";
+            $lastName = isset($explodedName[1]) ? $explodedName[1] : "";
+        }
 
         // Validate
         foreach($products->items as $sizes) {

@@ -16803,6 +16803,8 @@ $('.quantity-input').change(function () {
             $('#totalPrice').text('DO ZAPŁATY: ' + Math.round(data.totalPrice * 100) / 100 + " zł");
             $('#totalQty').text(data.totalQty);
             $('#product' + data.id + data.size).text(Math.round(data.price * 100) / 100 + " zł");
+            $('#quantity' + data.id + data.size).val(data.qty);
+            console.log(data.qty);
             $('.ajaxMessage').fadeIn('normal', function () {
                 $('.ajaxMessage').delay(1000).fadeOut();
             });
