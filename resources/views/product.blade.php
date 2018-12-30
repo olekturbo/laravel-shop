@@ -75,17 +75,15 @@
         <div class="row mt-3">
             <div class="col-md-12">
                 <h1>PRODUKTY PODOBNE</h1>
-              <div class="row">
-                  @foreach($similar_products as $similar_product)
-                 <a href="{{ route('product', [$similar_product->category->name, $similar_product->id, str_slug($similar_product->name)]) }}">
-                     <div class="col-md-3">
-                         <img class="w-100" src="{{ Voyager::image($similar_product->front_image) }}">
-                         <p class="text-center text-uppercase">{{ $similar_product->name }}</p>
-                     </div>
-                 </a>
-                  @endforeach
-              </div>
             </div>
+            @foreach($similar_products as $similar_product)
+                    <div class="col-md-3">
+                        <a href="{{ route('product', [$similar_product->category->name, $similar_product->id, str_slug($similar_product->name)]) }}">
+                            <img class="w-100" src="{{ Voyager::image($similar_product->front_image) }}">
+                            <p class="text-center text-uppercase">{{ $similar_product->name }}</p>
+                        </a>
+                    </div>
+            @endforeach
         </div>
         @endif
     </div>
