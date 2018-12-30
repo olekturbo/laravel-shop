@@ -58,7 +58,6 @@
 @stop
 
 @section('js')
-    <script type="text/javascript" src="https://secure.tpay.com/groups-10100.js"></script>
     <script>
         jQuery(document).ready(function(){
             jQuery('.toast__close').click(function(e){

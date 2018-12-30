@@ -111,6 +111,7 @@
 
 @section('js')
     <script type="text/javascript" src="https://secure.tpay.com/groups-10100.js"></script>
+    <script type="text/javascript" src="{{ asset('js/transfer.js') }}"></script>
     <script>
         jQuery(document).ready(function(){
             jQuery('.toast__close').click(function(e){

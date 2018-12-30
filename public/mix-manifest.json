@@ -2,5 +2,6 @@
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/js/template.js": "/js/template.js",
+    "/js/transfer.js": "/js/transfer.js",
     "/css/template.css": "/css/template.css"
 }
