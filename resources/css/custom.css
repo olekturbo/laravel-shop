@@ -406,14 +406,14 @@ only screen and (max-width: 760px),
 
 /* Custom Button */
 .btn-template, .btn-template:hover {
-    background: #ff5500;
+    background: #FF5900;
     color: white;
 }
 .color-template {
-    color: #ff5500;
+    color: #FF5900;
 }
 .btn-link {
-    color: #ff5500;
+    color: #FF5900;
 }
 .btn-link:hover {
     color: black;
@@ -421,8 +421,8 @@ only screen and (max-width: 760px),
 /* End Custom Button */
 
 /* Selection */
-::-moz-selection { background: #ff5500; color: white; }
-::selection { background: #ff5500; color: white; }
+::-moz-selection { background: #FF5900; color: white; }
+::selection { background: #FF5900; color: white; }
 /* End Selection */
 
 /* TPAY */
@@ -453,14 +453,14 @@ only screen and (max-width: 760px),
 
 /* PAGINATION */
 .page-item.active .page-link {
-    background: #ff5500;
-    border-color: #ff5500;
+    background: #FF5900;
+    border-color: #FF5900;
 }
 .page-link {
-    color: #ff5500;
+    color: #FF5900;
 }
 .page-link:hover {
-    color: #ff5500;
+    color: #FF5900;
 }
 .page-link:focus {
     box-shadow: none;
@@ -481,7 +481,7 @@ only screen and (max-width: 760px),
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ff5500;
+    background-color: #FF5900;
     /* change if the mask should have another color then white */
     z-index: 99;
     /* makes sure it stays on top */
