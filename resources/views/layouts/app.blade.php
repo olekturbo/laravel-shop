@@ -19,13 +19,14 @@
     @yield('css')
 </head>
 <body>
+    <div id="fakeLoader"></div>
     <div class="container pt-3">
         <nav class="navbar navbar-expand-lg navbar-light">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <a class="navbar-brand" href="{{ route('welcome') }}">
-                <img src="{{ asset('images/logo.png') }}" alt="logo">
+                <img id="logo" src="{{ asset('images/logo.png') }}" alt="logo">
             </a>
             <div class="nav-option order-lg-last">
                 @auth

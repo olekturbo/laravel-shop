@@ -24,6 +24,7 @@
         "bootstrap-social": "^5.1.1",
         "bootstrap-social-buttons": "^1.0.0",
         "cleave.js": "^1.4.7",
+        "fakeloader": "^1.0.0",
         "font-awesome": "^4.7.0",
         "icheck-bootstrap": "^3.0.1",
         "slider-pro": "^1.5.0"
