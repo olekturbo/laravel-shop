@@ -15,7 +15,7 @@
                         <th>Produkt</th>
                         <th>Zdjęcie podglądowe</th>
                         <th>Rozmiar</th>
-                        <th>Cena łączna</th>
+                        <th>Cena łączna @if(session()->get('coupon')) <span class="badge badge-success">-{{ \App\Coupon::where('code', session()->get('coupon'))->first()->amount }}%</span> @endif</th>
                         <th>Cena jednostkowa</th>
                         <th>Ilość</th>
                         <th>Akcje</th>
@@ -28,7 +28,7 @@
                         <td data-column="Produkt" class="text-uppercase"><a href="{{ route('product', [$single_product['item']->category->name, $single_product['item']->id, str_slug($single_product['item']->name)]) }}">{{ $single_product['item']->name }}</a></td>
                         <td data-column="Zdjęcie podglądowe"><img src="{{ Voyager::image($single_product['item']->front_image) }}" width="100"></td>
                         <td data-column="Rozmiar">{{ $size }}</td>
-                        <td data-column="Cena łączna" id="product{{ $single_product['item']->id }}{{ $size }}">{{ $single_product['price'] }} zł</td>
+                        <td data-column="Cena łączna" id="product{{ $single_product['item']->id }}{{ $size }}">{{ $single_product['price'] }} zł </td>
                         <td data-column="Cena jednostkowa">{{ $single_product['item']->discount_price ?? $single_product['item']->price }} zł</td>
                         <td data-column="Ilość">
                             <input id="quantity{{ $single_product['item']->id }}{{ $size }}" data-url="{{ route('product.updateCart', [$single_product['item']->id, $size]) }}" class="quantity-input" style="width: 4em" type="number" max="{{ $single_product['item']->quantity }}" value="{{ $single_product['qty'] }}">

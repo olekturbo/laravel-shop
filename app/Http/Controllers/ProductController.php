@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Coupon;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -174,5 +175,29 @@ class ProductController extends Controller
         }
 
         return view('order', compact('products', 'firstName', 'lastName'));
+    }
+
+    public function coupon(Request $request) {
+        $coupon = Coupon::where('code', $request->code)->first();
+
+        if($coupon) {
+            $sessionCoupon = session()->get('coupon');
+
+            if($sessionCoupon) {
+                return back()->with('couponError', 'Kod rabatowy został już wykorzystany w tej sesji!');
+            } else {
+                session()->put('coupon', $coupon->code);
+
+                $oldCart = session()->has('cart') ? session()->get('cart') : null;
+                $cart = new Cart($oldCart);
+                $cart->coupon();
+
+                $request->session()->put('cart', $cart);
+                return back();
+            }
+        }
+        else {
+            return back()->with('couponError', 'Nieprawidłowy kod rabatowy!');
+        }
     }
 }

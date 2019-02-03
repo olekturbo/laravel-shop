@@ -19,6 +19,7 @@ Route::group(['middleware' => ['social']], function () {
     Route::get('/aktualizuj-koszyk/{id}/{size}', 'ProductController@updateCart')->name('product.updateCart');
     Route::delete('/usun-z-koszyka/{id}/{size}', 'ProductController@deleteFromCart')->name('product.deleteFromCart');
     Route::get('/zamow/nowy', 'ProductController@order')->name('product.order');
+    Route::post('/kupon/realizuj', 'ProductController@coupon')->name('product.coupon');
     Route::get('/kategoria/{category}', 'CategoryController@show')->name('category');
 });
 Route::post('/transfer/order/new', 'TransferController@order')->name('transfer.order');

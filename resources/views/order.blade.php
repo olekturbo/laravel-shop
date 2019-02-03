@@ -11,7 +11,7 @@
                         <th>Produkt</th>
                         <th>Zdjęcie podglądowe</th>
                         <th>Rozmiar</th>
-                        <th>Cena łączna</th>
+                        <th>Cena łączna @if(session()->get('coupon')) <span class="badge badge-success">-{{ \App\Coupon::where('code', session()->get('coupon'))->first()->amount }}%</span> @endif</th>
                         <th>Cena jednostkowa</th>
                         <th>Ilość</th>
                     </tr>
@@ -36,8 +36,21 @@
                     </tbody>
                 </table>
                 <div class="row mt-5">
-                    <div class="col-md-12 text-right">
-                        <h5 name="totalPrice" id="totalPrice">DO ZAPŁATY: {{ $products->totalPrice }} zł</h5>
+                    <div class="col-md-12">
+                       <div class="float-left d-inline-block">
+                           <h5>KOD RABATOWY</h5>
+                           <form action="{{ route('product.coupon') }}" method="POST">
+                               @csrf
+                               <input name="code" maxlength="10"><i class="fa fa-shopping-bag" style="margin-left: -20px"></i>
+                               @if(session()->has('couponError'))
+                                   <p class="color-red">{{ session()->get('couponError') }}</p>
+                               @endif
+                               <button class="btn btn-template btn-block mt-3"><i class="fa fa-check"></i> REALIZUJ KUPON</button>
+                           </form>
+                       </div>
+                        <div class="text-right">
+                            <h5 name="totalPrice" id="totalPrice">DO ZAPŁATY: {{ $products->totalPrice }} zł</h5>
+                        </div>
                     </div>
                 </div>
             @else
