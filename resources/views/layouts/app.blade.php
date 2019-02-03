@@ -58,6 +58,30 @@
             </div>
         </nav>
     </div>
+    <div class="shopping-cart-right">
+        <button class="btn btn-xs btn-template" data-toggle="toggle" data-target="#shopping-cart-right-full"><i class="fas fa-shopping-bag"></i> <strong>koszyk</strong> </button>
+        <div id="shopping-cart-right-full" class="">
+            @if(session()->get('cart'))
+                @foreach(session()->get('cart')->items as $product)
+                    @foreach($product as $size => $single_product)
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="{{ Voyager::image($single_product['item']->front_image) }}" width="64">
+                            </div>
+                            <div class="col-md-8">
+                                <a href="{{ route('product', [$single_product['item']->category->name,$single_product['item']->id, str_slug($single_product['item']->name)]) }}">{{ $single_product['item']->name }}</a>
+                                <p class="small">Ilość: {{ $single_product['qty'] }}, Rozmiar: {{ $size }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                    @endforeach
+                @endforeach
+            <h5 class="pb-3">CENA ŁĄCZNA: {{ session()->get('cart')->totalPrice }} zł</h5>
+            @else
+                Brak produktów w koszyku
+            @endif
+        </div>
+    </div>
         @yield('content')
 
     <footer>

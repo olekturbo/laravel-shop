@@ -413,7 +413,7 @@ only screen and (max-width: 760px),
     color: white;
 }
 .color-template {
-    color: #FF5900;
+    color: #FF5900 !important;
 }
 .btn-link {
     color: #FF5900;
@@ -506,3 +506,58 @@ only screen and (max-width: 760px),
 }
 
 /* END LOADER */
+
+.shopping-cart-right {
+    position: fixed;
+    right: 0;
+    top: 33%;
+    writing-mode: tb-rl;
+    z-index: 100;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: none;
+    opacity: 0.8;
+}
+
+.shopping-cart-right strong {
+    margin-top: 5px;
+    letter-spacing: 1.5px;
+}
+
+#shopping-cart-right-full {
+    -webkit-transition: width 0.3s ease;
+    -moz-transition: width 0.3s ease;
+    -o-transition: width 0.3s ease;
+    transition: width 0.3s ease;
+
+    display: block;
+    overflow: auto;
+    overflow-x: hidden;
+    white-space: nowrap;
+    color: black;
+    vertical-align: middle;
+    line-height: 30px;
+    max-height: 300px;
+    text-align: center;
+    text-transform: uppercase;
+
+    width: 0px;
+    writing-mode: horizontal-tb;
+    scrollbar-color: #ffa969 white;
+    direction: rtl;
+    white-space: initial;
+    padding-bottom: 20px;
+}
+#shopping-cart-right-full.in {
+    width: 300px;
+    background: white;
+    border: 1px solid #f3f3f3;
+    padding-top: 20px;
+    border-radius: 5px;
+}
+
+#shopping-cart-right-full hr {
+    background: #f3f3f3;
+}

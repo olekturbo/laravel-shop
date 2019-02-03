@@ -81,3 +81,8 @@ $('.quantity-input').change(function(){
 });
 
 /* END QUANTITY AJAX */
+
+$("[data-target='#shopping-cart-right-full']").click(function() {
+    var selector = $(this).data("target");
+    $(selector).toggleClass('in');
+});
